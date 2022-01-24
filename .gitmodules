@@ -1,0 +1,3 @@
+[submodule "editor"]
+	path = editor
+	url = https://github.com/projection-engine/editor.git
