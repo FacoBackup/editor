@@ -1,0 +1,35 @@
+{
+  "name": "nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@f-ui/charts": "latest",
+    "@f-ui/core": "latest",
+    "@fontsource/roboto": "^4.5.1",
+    "axios": "^0.24.0",
+    "dexie": "^3.2.0",
+    "gl-matrix": "^3.4.3",
+
+    "hdrpng": "https://github.com/enkimute/hdrpng.js.git",
+
+    "next": "12.0.1",
+    "pj-math": "^0.0.6-alpha",
+    "prop-types": "^15.7.2",
+    "react": "17.0.2",
+    "react-colorful": "^5.5.1",
+    "react-dom": "17.0.2",
+    "react-input-mask": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.0",
+    "raw-loader": "^4.0.2",
+    "worker-loader": "^3.0.8"
+  }
+}
