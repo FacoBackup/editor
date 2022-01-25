@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/editor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/editor/components" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/editor/components/files" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/editor/components/scene" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/editor/components/scripting" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/editor/core" vcs="Git" />
+  </component>
+</project>
