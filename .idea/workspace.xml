@@ -4,7 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="" />
+    <list default="true" id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/Editor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/Editor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/files" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/files/components/Directories.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/components/Directories.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/files/hooks/useDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/hooks/useDB.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/files/utils/loadData.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/utils/loadData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/range/Range.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/range/Range.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/range/styles/Range.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/range/styles/Range.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/resizable/ResizableBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/resizable/ResizableBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/resizable/styles/Resizable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/resizable/styles/Resizable.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/Scene.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/Scene.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/MeshComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/MeshComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/SkyboxComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/SkyboxComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/styles/Scene.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/styles/Scene.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/utils/getElementIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/utils/getElementIcon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/utils/getForms.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/utils/getForms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/utils/mapToView.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/utils/mapToView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/shared/ImageSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/shared/ImageSelector.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/tree/TreeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/tree/TreeView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/viewport/styles/Viewport.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport/styles/Viewport.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/components/CubeMapComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/components/CubeMapComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/components/FolderComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/components/FolderComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/components/MaterialComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/components/MaterialComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/components/TransformComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/components/TransformComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/useECS.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/useECS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/hook/useSerializer.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/hook/useSerializer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/styles/Theme.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/utils/loadMaterial.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/utils/loadMaterial.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/utils/loadProjectData.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/utils/loadProjectData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,11 +51,12 @@
       <list>
         <option value="GLSL Shader" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/components/scene" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -41,7 +78,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/editor/components/scene/forms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/github" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -50,10 +88,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\public\github" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\public" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\pages" />
       <recent name="Z:\pj\editor\components\scene\forms" />
       <recent name="Z:\pj\editor\core\ecs\components" />
-      <recent name="Z:\pj\editor\core\renderer\shaders\deferred\resources" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\pe\editor\core\renderer\elements" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="Z:\pj\public\icons" />
@@ -71,10 +110,22 @@
       <workItem from="1643111507554" duration="7136000" />
       <workItem from="1643129411015" duration="797000" />
       <workItem from="1643194299877" duration="11629000" />
+      <workItem from="1643220857305" duration="11470000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
