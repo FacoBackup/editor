@@ -15,8 +15,9 @@
     --background-input: #545454;
 
     --background-1: #303030;
-    --background-2: #282828;
-    --background-3: #161616;
+    --background-2: #2b2b2b;
+    --background-2a: #282828;
+    --background-3: #111111;
 
     /*--background-6: #575757;*/
     /*--background-7: #6A6A6A;*/
@@ -27,6 +28,7 @@
 
     --background-1: white;
     --background-2: #f8f9fa;
+    --background-2a: #f8f9fa;
     --background-3: #ced4da;
     --background-input: #E7E7E7;
 

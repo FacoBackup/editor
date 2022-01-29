@@ -12,23 +12,24 @@ import useSerializer from "../editor/hook/useSerializer";
 import {useRouter} from "next/router";
 
 
-export default function project() {
+export default function Project() {
     const router = useRouter()
+    const [executingAnimation, setExecutingAnimation] = useState(false)
     const [alert, setAlert] = useState({})
     const [id, setId] = useState()
     const settings = useSettings()
-    const engine = useEngine(id, 'free', settings)
+    const engine = useEngine(id, executingAnimation)
 
     const db = useDB('FS', 'Project', setAlert, id)
     const packageMaker = useRef()
     const theme = useContext(ThemeContext)
     const serializer = useSerializer(engine, db.db, setAlert, settings, id)
     const [projectLoaded, setProjectLoaded] = useState({
-        project:false ,
+        project: false,
         data: false
     })
     useEffect(() => {
-        if(router.isReady)
+        if (router.isReady)
             setId(router.query.id)
 
     }, [router.isReady])
@@ -45,15 +46,15 @@ export default function project() {
                 setAlert,
                 router.query.id,
                 () => router.push('/'), () => {
-                setProjectLoaded({
-                    project: true,
-                    data: false
+                    setProjectLoaded({
+                        project: true,
+                        data: false
+                    })
                 })
-            })
         }
     }, [db.ready])
     useEffect(() => {
-        if (engine.gpu  && projectLoaded.project && !projectLoaded.data)
+        if (engine.gpu && projectLoaded.project && !projectLoaded.data)
             loadEntities(db.db, engine, id, () => {
                 setProjectLoaded({
                     project: true,
@@ -63,14 +64,19 @@ export default function project() {
     }, [engine.gpu, projectLoaded])
     return (
         <DatabaseProvider.Provider value={db.db}>
-            <Alert open={alert.type !== undefined} handleClose={() => setAlert({})} variant={alert.type}
-                   delay={3500}>
+            <Alert
+                open={alert.type !== undefined}
+                handleClose={() => setAlert({})} variant={alert.type}
+                delay={3500}>
                 <div className={styles.alertContent} title={alert.message}>
                     {alert.message}
                 </div>
             </Alert>
             <Editor
+
                 {...serializer}
+                executingAnimation={executingAnimation}
+                setExecutingAnimation={setExecutingAnimation}
                 theme={theme}
 
                 databaseHook={db}

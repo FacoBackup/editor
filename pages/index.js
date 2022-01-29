@@ -1,10 +1,12 @@
-import {Alert, Button, Card, Masonry, Modal, TextField, ThemeContext, ToolTip} from "@f-ui/core";
+import {Alert, Button, Card, Masonry, Modal, TextField, ToolTip,} from "@f-ui/core";
 import styles from '../styles/Home.module.css'
 import {Dexie} from "dexie";
-import {useContext, useEffect, useLayoutEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import randomID from "../editor/utils/randomID";
 import ContextMenu from "../editor/components/context/ContextMenu";
 import {useRouter} from "next/router";
+import initializeDatabase from "../editor/components/files/utils/initializeDatabase";
+
 
 export default function Home(props) {
     const [db, setDb] = useState()
@@ -15,17 +17,19 @@ export default function Home(props) {
     const router = useRouter()
 
     useEffect(() => {
-        const database = new Dexie('FS');
-
-        database.open().then(e => {
-            e.table('project').toArray().then(r => {
-                setProjects(r.map(e => {
-                    return {id: e.id, settings: JSON.parse(e.settings)}
+        initializeDatabase('FS').then(r => {
+            r[0].open()
+            setDb(r[0])
+            r[0].table('project').toArray().then(res => {
+                setProjects(res.map(re => {
+                    return {
+                        ...re,
+                        settings: JSON.parse(re.settings)
+                    }
                 }))
             })
-        }).catch(e => {
+
         })
-        setDb(database)
     }, [])
 
     return (
@@ -51,7 +55,7 @@ export default function Home(props) {
                     onClick={() => {
                         db?.table('project').add({
                             id: randomID(),
-                            settings: JSON.stringify( {
+                            settings: JSON.stringify({
                                 projectCreationDate: (new Date()).toDateString(),
                                 showFPS: false,
                                 lightCalculations: true,
@@ -117,7 +121,7 @@ export default function Home(props) {
                         requiredTrigger: 'data-card',
 
                         label: 'Open project',
-                        onClick: (node) => router.push('/project?id='+node.getAttribute('data-card')),
+                        onClick: (node) => router.push('/project?id=' + node.getAttribute('data-card')),
                         icon: <span className={'material-icons-round'}>open_in_new</span>
                     },
                     {
@@ -143,12 +147,17 @@ export default function Home(props) {
                     {projects.length > 0 ?
                         <Masonry width={'100%'}>
                             {projects.map((p, i) => (
-                                <Card className={styles.card}>
-                                    <div data-card={p.id} style={{maxWidth: '100%', overflow: 'hidden'}} onClick={() => router.push('/project?id='+p.id)}>
-                                        <div className={styles.preview} data-odd={`${i % 2 !== 0}`}>
-                                            <img src={p.settings.preview ? p.settings.preview : './LOGO.png'}
-                                                 alt={'preview'}/>
-                                        </div>
+                                <Card
+                                    attributes={{
+                                        'data-card': p.id
+                                    }}
+                                    onClick={() => router.push('/project?id=' + p.id)} className={styles.card}>
+                                    <div style={{maxWidth: '100%', overflow: 'hidden'}}>
+                                        <img
+                                            className={styles.preview}
+                                            src={p.settings.preview ? p.settings.preview : './LOGO.png'}
+                                            alt={'preview'}
+                                        />
                                         {p.settings.projectName}
                                     </div>
                                 </Card>
