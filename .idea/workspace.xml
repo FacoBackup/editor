@@ -5,23 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric-ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric-ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric-ui/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/fabric-ui/rollup.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric-ui/src/core" beforeDir="false" afterPath="$PROJECT_DIR$/fabric-ui/src/core" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric-ui/src/core/navigation/accordion/Accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/fabric-ui/src/core/navigation/accordion/Accordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric-ui/src/core/navigation/accordion/styles/Accordion.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/fabric-ui/src/core/navigation/accordion/styles/Accordion.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric-ui/src/core/navigation/modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/fabric-ui/src/core/navigation/modal/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/viewport-options/ViewportOptions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport-options/ViewportOptions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/viewport-options/styles/VO.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport-options/styles/VO.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/viewport/Viewport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport/Viewport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/viewport/hooks/useDimensions.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport/hooks/useDimensions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/viewport/styles/Viewport.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport/styles/Viewport.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/systems/DeferredSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/systems/DeferredSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/systems/PostProcessingSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/systems/PostProcessingSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/ecs/utils/systemReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/ecs/utils/systemReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/renderer/elements/Framebuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/renderer/elements/Framebuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/renderer/elements/GBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/renderer/elements/GBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/renderer/elements/PostProcessing.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/renderer/elements/PostProcessing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/useECS.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/useECS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/useEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/useEngine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/core/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/core" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/components" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -107,7 +105,8 @@
       <workItem from="1643384572579" duration="7025000" />
       <workItem from="1643391663356" duration="8404000" />
       <workItem from="1643454378809" duration="20902000" />
-      <workItem from="1643479495825" duration="49000" />
+      <workItem from="1643479495825" duration="748000" />
+      <workItem from="1643486020694" duration="2208000" />
     </task>
     <servers />
   </component>
