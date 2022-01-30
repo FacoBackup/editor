@@ -1,6 +1,6 @@
 import Editor from "../editor/Editor";
 import useDB from "../editor/components/files/hooks/useDB";
-import DatabaseProvider from '../editor/hook/DatabaseProvider'
+import DatabaseProvider from '../editor/components/db/DatabaseProvider'
 import {useContext, useEffect, useRef, useState} from "react";
 import useSettings from "../editor/hook/useSettings";
 import Maker from "../editor/utils/Maker";
@@ -10,6 +10,9 @@ import {Alert, ThemeContext} from "@f-ui/core";
 import styles from '../styles/Project.module.css'
 import useSerializer from "../editor/hook/useSerializer";
 import {useRouter} from "next/router";
+import Database from "../editor/components/db/Database";
+import LoadProvider from "../editor/hook/LoadProvider";
+import EVENTS from "../editor/utils/EVENTS";
 
 
 export default function Project() {
@@ -19,51 +22,52 @@ export default function Project() {
     const [id, setId] = useState()
     const settings = useSettings()
     const engine = useEngine(id, executingAnimation)
-
-    const db = useDB('FS', 'Project', setAlert, id)
+    const [database, setDatabase] = useState()
+    const load = useContext(LoadProvider)
     const packageMaker = useRef()
     const theme = useContext(ThemeContext)
-    const serializer = useSerializer(engine, db.db, setAlert, settings, id)
-    const [projectLoaded, setProjectLoaded] = useState({
-        project: false,
-        data: false
-    })
+    const serializer = useSerializer(engine, database, setAlert, settings, id)
+
+    useEffect(() => {
+        setDatabase(new Database('FS'))
+    }, [])
     useEffect(() => {
         if (router.isReady)
             setId(router.query.id)
 
     }, [router.isReady])
     useEffect(() => {
+        if (database && id ) {
 
-        if (db.ready) {
+            load.pushEvent(EVENTS.PROJECT_SETTINGS)
+            load.pushEvent(EVENTS.PROJECT_DATA)
             if (!packageMaker.current)
                 packageMaker.current = new Maker()
 
             loadProject(
-                db.db,
+                database,
                 engine,
                 settings,
                 setAlert,
-                router.query.id,
-                () => router.push('/'), () => {
-                    setProjectLoaded({
-                        project: true,
-                        data: false
-                    })
+                id,
+                () => router.push('/'),
+                () => {
+
+                    load.finishEvent(EVENTS.PROJECT_SETTINGS)
                 })
         }
-    }, [db.ready])
+    }, [database, id])
     useEffect(() => {
-        if (engine.gpu && projectLoaded.project && !projectLoaded.data)
-            loadEntities(db.db, engine, id, () => {
-                setProjectLoaded({
-                    project: true,
-                    data: true
-                })
+        if (engine.gpu && database)
+            loadEntities(database, engine, id, () => {
+
+                load.finishEvent(EVENTS.PROJECT_DATA)
             })
-    }, [engine.gpu, projectLoaded])
+    }, [engine.gpu])
+
+
     return (
-        <DatabaseProvider.Provider value={db.db}>
+        <DatabaseProvider.Provider value={database}>
             <Alert
                 open={alert.type !== undefined}
                 handleClose={() => setAlert({})} variant={alert.type}
@@ -78,8 +82,6 @@ export default function Project() {
                 executingAnimation={executingAnimation}
                 setExecutingAnimation={setExecutingAnimation}
                 theme={theme}
-
-                databaseHook={db}
                 packageMaker={packageMaker}
                 engine={engine}
                 setAlert={setAlert}

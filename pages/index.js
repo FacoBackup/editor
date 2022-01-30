@@ -1,36 +1,47 @@
 import {Alert, Button, Card, Masonry, Modal, TextField, ToolTip,} from "@f-ui/core";
 import styles from '../styles/Home.module.css'
 import {Dexie} from "dexie";
-import {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import randomID from "../editor/utils/randomID";
 import ContextMenu from "../editor/components/context/ContextMenu";
 import {useRouter} from "next/router";
 import initializeDatabase from "../editor/components/files/utils/initializeDatabase";
+import Database from "../editor/components/db/Database";
+import useDB from "../editor/components/files/hooks/useDB";
+import LoadProvider from "../editor/hook/LoadProvider";
+import EVENTS from "../editor/utils/EVENTS";
+
 
 
 export default function Home(props) {
-    const [db, setDb] = useState()
+
     const [projects, setProjects] = useState([])
     const [openModal, setOpenModal] = useState(false)
     const [projectName, setProjectName] = useState('')
     const [alert, setAlert] = useState({})
     const router = useRouter()
+    const [database, setDatabase] = useState()
+    const load = useContext(LoadProvider)
 
     useEffect(() => {
-        initializeDatabase('FS').then(r => {
-            r[0].open()
-            setDb(r[0])
-            r[0].table('project').toArray().then(res => {
-                setProjects(res.map(re => {
-                    return {
-                        ...re,
-                        settings: JSON.parse(re.settings)
-                    }
-                }))
-            })
-
-        })
+        load.pushEvent(EVENTS.PROJECT_LIST)
+        setDatabase(new Database('FS'))
     }, [])
+
+    useEffect(() => {
+
+        if (database)
+            database?.listProject()
+                .then(res => {
+                    setProjects(res.map(re => {
+                        return {
+                            ...re,
+                            settings: JSON.parse(re.settings)
+                        }
+                    }))
+                    load.finishEvent(EVENTS.PROJECT_LIST)
+                })
+    }, [database])
 
     return (
         <div className={styles.wrapper}>
@@ -53,7 +64,8 @@ export default function Home(props) {
                     disabled={projectName === ''}
                     className={styles.submitButton}
                     onClick={() => {
-                        db?.table('project').add({
+
+                        const newData = {
                             id: randomID(),
                             settings: JSON.stringify({
                                 projectCreationDate: (new Date()).toDateString(),
@@ -64,19 +76,21 @@ export default function Home(props) {
                                 timestamp: 300000,
                                 projectName: projectName
                             })
-                        }).then(r => {
-                            setAlert({
-                                type: 'success',
-                                message: 'Project created.'
+                        }
+
+                        database?.postProject(newData)
+                            .then(r => {
+
+                                setAlert({
+                                    type: 'success',
+                                    message: 'Project created.'
+                                })
+                                setProjects(prev => {
+                                    return [...prev, newData]
+                                })
+                                setProjectName('')
+                                setOpenModal(false)
                             })
-                            db.table('project').toArray().then(r => {
-                                setProjects(r.map(e => {
-                                    return {id: e.id, settings: JSON.parse(e.settings)}
-                                }))
-                            })
-                        })
-                        setProjectName('')
-                        setOpenModal(false)
                     }}>
                     Create project
                 </Button>
@@ -128,25 +142,28 @@ export default function Home(props) {
                         requiredTrigger: 'data-card',
 
                         label: 'Delete project',
-                        onClick: (node) => db?.table('project')
-                            .delete(node.getAttribute('data-card'))
-                            .then(r => {
-                                setAlert({
-                                    type: 'success',
-                                    message: 'Project deleted.'
+                        onClick: (node) => {
+                            const id = node.getAttribute('data-card')
+                            load.pushEvent(EVENTS.PROJECT_DELETE)
+                            database.deleteProject(id)
+                                .then(() => {
+                                    setAlert({
+                                        type: 'success',
+                                        message: 'Project deleted.'
+                                    })
+                                    setProjects(prev => {
+                                        return prev.filter(p => p.id !== id)
+                                    })
+                                    load.finishEvent(EVENTS.PROJECT_DELETE)
                                 })
-                                db.table('project').toArray().then(r => {
-                                    setProjects(r.map(e => {
-                                        return {id: e.id, settings: JSON.parse(e.settings)}
-                                    }))
-                                })
-                            }),
+                        },
                         icon: <span className={'material-icons-round'}>delete</span>
                     }
                 ]}>
                     {projects.length > 0 ?
                         <Masonry width={'100%'}>
                             {projects.map((p, i) => (
+
                                 <Card
                                     attributes={{
                                         'data-card': p.id
@@ -161,6 +178,7 @@ export default function Home(props) {
                                         {p.settings.projectName}
                                     </div>
                                 </Card>
+
                             ))}
                         </Masonry>
                         :
