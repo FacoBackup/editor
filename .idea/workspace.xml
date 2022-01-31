@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/Editor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/Editor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/loader/Loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/loader/Loader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/loader/styles/Loader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/loader/styles/Loader.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/Scene.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/Scene.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/CubeMapComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/CubeMapComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/MaterialComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/MaterialComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/MeshComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/MeshComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/SkyboxComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/SkyboxComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/utils/getTabIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/utils/getTabIcon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/utils/useForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/utils/useForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/hook/useSerializer.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/hook/useSerializer.js" afterDir="false" />
-    </list>
+    <list default="true" id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,8 +14,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="GLSL Shader" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -73,11 +60,11 @@
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\ecs\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\pj\editor\core\renderer" />
+      <recent name="Z:\pj\editor\core\utils\obj" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\components\loader" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\components\db" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\renderer\shaders\cubemap\resources" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\renderer\shaders\cubemap" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\renderer\elements" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -106,6 +93,7 @@
       <workItem from="1643486020694" duration="2855000" />
       <workItem from="1643542430666" duration="23620000" />
       <workItem from="1643578353029" duration="1853000" />
+      <workItem from="1643636854025" duration="5872000" />
     </task>
     <servers />
   </component>
