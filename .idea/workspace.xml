@@ -5,46 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/editor/components/db/DatabaseProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/editor/Editor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/Editor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/db/DB.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/db/operations.worker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/files/Explorer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/Explorer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/files/components/Item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/components/Item.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/files/hooks/useDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/hooks/useDB.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/files/templates/File.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/templates/File.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/files/utils/getIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/utils/getIcon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/files/utils/handleImportFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/utils/handleImportFile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/files/utils/loadData.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/files/utils/loadData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/resizable/ResizableBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/resizable/ResizableBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/loader/Loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/loader/Loader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/loader/styles/Loader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/loader/styles/Loader.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/editor/components/scene/Scene.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/Scene.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/CubeMapComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/CubeMapComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/MaterialComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/MaterialComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/MeshComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/MeshComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/editor/components/scene/forms/SkyboxComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/forms/SkyboxComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scene/styles/Scene.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/styles/Scene.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scene/utils/getTabIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/utils/getTabIcon.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/editor/components/scene/utils/useForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scene/utils/useForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scripting" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scripting" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scripting/components/NodeEditor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scripting/components/NodeEditor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scripting/hooks/usePrototype.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scripting/hooks/usePrototype.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scripting/utils/parseNodes.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scripting/utils/parseNodes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/scripting/workflows/material/templates/TextureSample.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scripting/workflows/material/templates/TextureSample.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/shared/ImageSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/shared/ImageSelector.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/viewport/hooks/useDimensions.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport/hooks/useDimensions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/components/viewport/styles/Viewport.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/viewport/styles/Viewport.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/hook/DatabaseProvider.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/editor/hook/useSerializer.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/hook/useSerializer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/hook/useTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/hook/useTabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/utils/handleDrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/utils/handleDrop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/utils/handlePackageSubmit.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/utils/handlePackageSubmit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/utils/loadMaterial.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/utils/loadMaterial.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/utils/loadProjectData.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/utils/loadProjectData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/App.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +33,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/core" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/components/scene" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -133,6 +105,7 @@
       <workItem from="1643479495825" duration="748000" />
       <workItem from="1643486020694" duration="2855000" />
       <workItem from="1643542430666" duration="23620000" />
+      <workItem from="1643578353029" duration="1853000" />
     </task>
     <servers />
   </component>
