@@ -1,7 +1,7 @@
 import {Alert, Button, Card, Masonry, Modal, TextField, ToolTip,} from "@f-ui/core";
 import styles from '../styles/Home.module.css'
 import {Dexie} from "dexie";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import randomID from "../editor/utils/randomID";
 import ContextMenu from "../editor/components/context/ContextMenu";
 import {useRouter} from "next/router";
@@ -10,7 +10,7 @@ import Database from "../editor/components/db/Database";
 import useDB from "../editor/components/files/hooks/useDB";
 import LoadProvider from "../editor/hook/LoadProvider";
 import EVENTS from "../editor/utils/EVENTS";
-
+import Maker from "../editor/utils/Maker";
 
 
 export default function Home(props) {
@@ -22,25 +22,29 @@ export default function Home(props) {
     const router = useRouter()
     const [database, setDatabase] = useState()
     const load = useContext(LoadProvider)
+    const uploadRef = useRef()
 
     useEffect(() => {
         load.pushEvent(EVENTS.PROJECT_LIST)
         setDatabase(new Database('FS'))
     }, [])
+    const refresh = () => {
+        database?.listProject()
+            .then(res => {
 
+                setProjects(res.map(re => {
+                    return {
+                        ...re,
+                        settings:JSON.parse(re.settings)
+                    }
+                }))
+                load.finishEvent(EVENTS.PROJECT_LIST)
+            })
+    }
     useEffect(() => {
 
         if (database)
-            database?.listProject()
-                .then(res => {
-                    setProjects(res.map(re => {
-                        return {
-                            ...re,
-                            settings: JSON.parse(re.settings)
-                        }
-                    }))
-                    load.finishEvent(EVENTS.PROJECT_LIST)
-                })
+            refresh()
     }, [database])
 
     return (
@@ -104,13 +108,48 @@ export default function Home(props) {
                         Projection Engine
                     </div>
                 </div>
+
                 <Button
                     className={styles.optionButton}
                     variant={'outlined'}
                     onClick={() => setOpenModal(true)}>
                     New project
                 </Button>
-                <Button className={styles.optionButton} variant={'outlined'} onClick={() => null}>
+                <input style={{display: 'none'}}
+                       type={'file'}
+                       accept={['.projection']}
+                       onChange={f => {
+                           load.pushEvent(EVENTS.PROJECT_IMPORT)
+                           Maker.parse(f.target.files[0], database)
+                               .then((res) => {
+                                   let promises = []
+
+                                   res.forEach(data => {
+                                       const parsed = JSON.parse(data.data)
+                                       if (data.type === 0)
+                                           promises.push(new Promise(resolve => {
+                                               database?.postProject({id: parsed.id, settings: JSON.stringify(parsed.settings)}).then(() => resolve()).catch(() => resolve())
+                                           }))
+                                       else if (data.type === 1)
+                                           promises.push(new Promise(resolve => {
+                                               database?.postFileWithBlob(parsed, parsed.blob).then(() => resolve()).catch(() => resolve())
+                                           }))
+                                       else if (data.type === 2)
+                                           promises.push(new Promise(resolve => database?.postEntity(parsed).then(() => resolve()).catch(() => resolve())))
+                                   })
+
+                                   Promise.all(promises).then(() => {
+                                       load.finishEvent(EVENTS.PROJECT_IMPORT)
+                                       refresh()
+                                   })
+                               })
+                           f.target.value = ''
+                       }}
+                       ref={uploadRef}/>
+                <Button
+                    className={styles.optionButton}
+                    variant={'outlined'}
+                    onClick={() => uploadRef.current.click()}>
                     Load project
                 </Button>
 

@@ -13,6 +13,7 @@ import {useRouter} from "next/router";
 import Database from "../editor/components/db/Database";
 import LoadProvider from "../editor/hook/LoadProvider";
 import EVENTS from "../editor/utils/EVENTS";
+import Head from 'next/head'
 
 
 export default function Project() {
@@ -37,7 +38,7 @@ export default function Project() {
 
     }, [router.isReady])
     useEffect(() => {
-        if (database && id ) {
+        if (database && id) {
 
             load.pushEvent(EVENTS.PROJECT_SETTINGS)
             load.pushEvent(EVENTS.PROJECT_DATA)
@@ -68,6 +69,9 @@ export default function Project() {
 
     return (
         <DatabaseProvider.Provider value={database}>
+            <Head>
+                <title>{settings.projectName}</title>
+            </Head>
             <Alert
                 open={alert.type !== undefined}
                 handleClose={() => setAlert({})} variant={alert.type}
