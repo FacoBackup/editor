@@ -8,7 +8,9 @@
     <mapping directory="$PROJECT_DIR$/editor/components/scene" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/editor/components/scripting" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/editor/core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fabric" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fabric-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fabric-ui/src/core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fabric/src/core" vcs="Git" />
   </component>
 </project>
