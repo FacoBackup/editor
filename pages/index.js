@@ -1,20 +1,16 @@
 import {Alert, Button, Card, Masonry, Modal, TextField, ToolTip,} from "@f-ui/core";
 import styles from '../styles/Home.module.css'
-import {Dexie} from "dexie";
 import React, {useContext, useEffect, useRef, useState} from "react";
-import randomID from "../editor/utils/randomID";
+import randomID from "../editor/utils/misc/randomID";
 import ContextMenu from "../editor/components/context/ContextMenu";
 import {useRouter} from "next/router";
-import initializeDatabase from "../editor/components/files/utils/initializeDatabase";
 import Database from "../editor/components/db/Database";
-import useDB from "../editor/components/files/hooks/useDB";
 import LoadProvider from "../editor/hook/LoadProvider";
-import EVENTS from "../editor/utils/EVENTS";
-import Maker from "../editor/utils/Maker";
+import EVENTS from "../editor/utils/misc/EVENTS";
+import Maker from "../editor/utils/classes/Maker";
 
 
 export default function Home(props) {
-
     const [projects, setProjects] = useState([])
     const [openModal, setOpenModal] = useState(false)
     const [projectName, setProjectName] = useState('')

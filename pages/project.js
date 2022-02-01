@@ -1,10 +1,9 @@
 import Editor from "../editor/Editor";
-import useDB from "../editor/components/files/hooks/useDB";
 import DatabaseProvider from '../editor/components/db/DatabaseProvider'
 import {useContext, useEffect, useRef, useState} from "react";
 import useSettings from "../editor/hook/useSettings";
-import Maker from "../editor/utils/Maker";
-import loadProject, {loadEntities} from "../editor/utils/loadProjectData";
+import Maker from "../editor/utils/classes/Maker";
+import loadProject, {loadEntities} from "../editor/utils/parsers/loadProjectData";
 import useEngine from "../editor/core/useEngine";
 import {Alert, ThemeContext} from "@f-ui/core";
 import styles from '../styles/Project.module.css'
@@ -12,7 +11,7 @@ import useSerializer from "../editor/hook/useSerializer";
 import {useRouter} from "next/router";
 import Database from "../editor/components/db/Database";
 import LoadProvider from "../editor/hook/LoadProvider";
-import EVENTS from "../editor/utils/EVENTS";
+import EVENTS from "../editor/utils/misc/EVENTS";
 import Head from 'next/head'
 
 

@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="" />
+    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,14 +22,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="GLSL Shader" />
         <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/components" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -30,7 +38,10 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="24AKgdVZug2USicULHjWfoLIJrk" />
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
+  </component>
+  <component name="ProjectId" id="24WML3joMtufXzoNFUs4a937xFD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -42,61 +53,34 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/fabric/src/core/visualization/card" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="Z:\projection\fabric\src\core\visualization\card" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\public" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\renderer\shaders\cubemap" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\renderer\shaders\cubemap\resources" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\renderer\elements" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="Z:\projection\fabric\src\core\visualization\card" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\core\utils\gltf" />
-      <recent name="Z:\pj\editor\core\renderer" />
-      <recent name="Z:\pj\editor\core\utils\obj" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\components\loader" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\parsers" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\handlers" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\misc" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\classes" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0f13989f-bc78-4a53-8eca-d4e6f188b1ee" name="Changes" comment="" />
-      <created>1643068065067</created>
+      <changelist id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="" />
+      <created>1643741833234</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1643068065067</updated>
-      <workItem from="1643068068327" duration="3171000" />
-      <workItem from="1643111507554" duration="7136000" />
-      <workItem from="1643129411015" duration="797000" />
-      <workItem from="1643194299877" duration="11629000" />
-      <workItem from="1643220857305" duration="11470000" />
-      <workItem from="1643287676214" duration="1765000" />
-      <workItem from="1643304416413" duration="8474000" />
-      <workItem from="1643315654500" duration="2538000" />
-      <workItem from="1643321462643" duration="1705000" />
-      <workItem from="1643326287508" duration="7149000" />
-      <workItem from="1643365018144" duration="15479000" />
-      <workItem from="1643384572579" duration="7025000" />
-      <workItem from="1643391663356" duration="8404000" />
-      <workItem from="1643454378809" duration="20902000" />
-      <workItem from="1643479495825" duration="748000" />
-      <workItem from="1643486020694" duration="2855000" />
-      <workItem from="1643542430666" duration="23620000" />
-      <workItem from="1643578353029" duration="1853000" />
-      <workItem from="1643636854025" duration="5872000" />
-      <workItem from="1643651516619" duration="15601000" />
-      <workItem from="1643719577651" duration="9902000" />
+      <updated>1643741833234</updated>
+      <workItem from="1643741835607" duration="4378000" />
+      <workItem from="1643746263579" duration="1114000" />
+      <workItem from="1643747405616" duration="977000" />
     </task>
     <servers />
   </component>
@@ -114,16 +98,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/editor/components/scripting/Prototype.jsx</url>
-          <line>48</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

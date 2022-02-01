@@ -1,4 +1,5 @@
 module.exports = {
+    inlineImageLimit: 0,
     devIndicators: {
         buildActivity: false
     },

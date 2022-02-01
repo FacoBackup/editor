@@ -1,11 +1,10 @@
 import '../styles/globals.css'
-import {Fabric, Modal} from "@f-ui/core";
+import {Fabric} from "@f-ui/core";
 import styles from '../styles/App.module.css'
-import {useMemo, useState} from "react";
+import {useState} from "react";
 import "@fontsource/roboto";
 import LoadProvider from "../editor/hook/LoadProvider";
 import useLoading from "../editor/hook/useLoading";
-import randomInRange from "../editor/utils/randomInRange";
 import ThemeProvider from "../editor/hook/ThemeProvider";
 
 function MyApp({Component, pageProps}) {
