@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/editor/core/utils/gltf/coreParser.js" beforeDir="false" afterPath="$PROJECT_DIR$/editor/core/utils/gltf/coreParser.js" afterDir="false" />
-    </list>
+    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +19,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/core" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/components" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -46,6 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/editor/core/renderer/shaders/shadowmap" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -56,6 +55,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap" />
+      <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\parsers" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\handlers" />
@@ -76,6 +79,11 @@
       <workItem from="1643747405616" duration="977000" />
       <workItem from="1643750395451" duration="4282000" />
       <workItem from="1643759918683" duration="1691000" />
+      <workItem from="1643802778764" duration="2921000" />
+      <workItem from="1643810852381" duration="11558000" />
+      <workItem from="1643887068551" duration="4860000" />
+      <workItem from="1643894677595" duration="1611000" />
+      <workItem from="1643896915545" duration="4260000" />
     </task>
     <servers />
   </component>
