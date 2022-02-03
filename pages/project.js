@@ -4,7 +4,7 @@ import {useContext, useEffect, useRef, useState} from "react";
 import useSettings from "../editor/hook/useSettings";
 import Maker from "../editor/utils/classes/Maker";
 import loadProject, {loadEntities} from "../editor/utils/parsers/loadProjectData";
-import useEngine from "../editor/core/useEngine";
+import useEngine from "../editor/hook/useEngine";
 import {Alert, ThemeContext} from "@f-ui/core";
 import styles from '../styles/Project.module.css'
 import useSerializer from "../editor/hook/useSerializer";

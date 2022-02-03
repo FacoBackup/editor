@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="" />
+    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/default_skybox.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editor/components/scripting/components/NodeEditor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/editor/components/scripting/components/NodeEditor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +27,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/editor/components" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -44,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/editor/core/renderer/shaders/shadowmap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -56,14 +64,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\public" />
       <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap" />
       <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\parsers" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\handlers" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\misc" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\utils\classes" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\components\viewport\styles" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\components\viewport\hooks" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\components\viewport" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\hook" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\editor\components\selector\styles" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -84,6 +94,11 @@
       <workItem from="1643887068551" duration="4860000" />
       <workItem from="1643894677595" duration="1611000" />
       <workItem from="1643896915545" duration="4260000" />
+      <workItem from="1643910931740" duration="142000" />
+      <workItem from="1643911083572" duration="4252000" />
+      <workItem from="1643915378519" duration="4624000" />
+      <workItem from="1643921766329" duration="1794000" />
+      <workItem from="1643924686833" duration="2983000" />
     </task>
     <servers />
   </component>
