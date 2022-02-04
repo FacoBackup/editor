@@ -5,9 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/checkout.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commit.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/meshes/plane.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/meshes/sphere.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/views/material" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mesh/MeshVisualizer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mesh/components/Controls.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mesh/forms/CollisionComponent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mesh/forms/PhysicsBodyComponent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mesh/hook/useVisualizer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/mesh/styles/Mesh.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files" beforeDir="false" afterPath="$PROJECT_DIR$/views/files" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +110,7 @@
       <workItem from="1643911083572" duration="4252000" />
       <workItem from="1643915378519" duration="4624000" />
       <workItem from="1643921766329" duration="1794000" />
-      <workItem from="1643924686833" duration="8084000" />
+      <workItem from="1643924686833" duration="8661000" />
     </task>
     <servers />
   </component>
