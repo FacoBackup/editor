@@ -1,13 +1,14 @@
 import {Alert, Button, Card, Masonry, Modal, TextField, ToolTip,} from "@f-ui/core";
 import styles from '../styles/Home.module.css'
 import React, {useContext, useEffect, useRef, useState} from "react";
-import randomID from "../editor/utils/misc/randomID";
-import ContextMenu from "../editor/components/context/ContextMenu";
 import {useRouter} from "next/router";
-import Database from "../editor/components/db/Database";
-import LoadProvider from "../editor/hook/LoadProvider";
-import EVENTS from "../editor/utils/misc/EVENTS";
-import Maker from "../editor/utils/classes/Maker";
+import LoadProvider from "../views/editor/hook/LoadProvider";
+
+import Database from "../components/db/Database";
+import EVENTS from "../views/editor/utils/misc/EVENTS";
+import randomID from "../views/editor/utils/misc/randomID";
+import Maker from "../views/editor/utils/classes/Maker";
+import ContextMenu from "../components/context/ContextMenu";
 
 
 export default function Home(props) {

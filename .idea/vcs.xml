@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/components" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/editor" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/editor/components" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/editor/components/files" vcs="Git" />
@@ -12,5 +13,10 @@
     <mapping directory="$PROJECT_DIR$/fabric-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fabric-ui/src/core" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fabric/src/core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/services/engine" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/views/editor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/views/files" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/views/material" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/views/scene" vcs="Git" />
   </component>
 </project>

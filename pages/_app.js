@@ -1,12 +1,12 @@
 import '../styles/globals.css'
 import {Fabric} from "@f-ui/core";
 import styles from '../styles/App.module.css'
-import {useState} from "react";
 import "@fontsource/roboto";
-import LoadProvider from "../editor/hook/LoadProvider";
-import useLoading from "../editor/hook/useLoading";
-import ThemeProvider from "../editor/hook/GlobalProvider";
-import useGlobalOptions from "../editor/hook/useGlobalOptions";
+import LoadProvider from "../views/editor/hook/LoadProvider";
+import useGlobalOptions from "../views/editor/hook/useGlobalOptions";
+import useLoading from "../components/loader/useLoading";
+import ThemeProvider from "../views/editor/hook/ThemeProvider";
+
 
 function Global({Component, pageProps}) {
 

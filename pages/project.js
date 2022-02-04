@@ -1,18 +1,21 @@
-import Editor from "../editor/Editor";
-import DatabaseProvider from '../editor/components/db/DatabaseProvider'
 import {useContext, useEffect, useRef, useState} from "react";
-import useSettings from "../editor/hook/useSettings";
-import Maker from "../editor/utils/classes/Maker";
-import loadProject, {loadEntities} from "../editor/utils/parsers/loadProjectData";
-import useEngine from "../editor/hook/useEngine";
+
 import {Alert, ThemeContext} from "@f-ui/core";
 import styles from '../styles/Project.module.css'
-import useSerializer from "../editor/hook/useSerializer";
+
 import {useRouter} from "next/router";
-import Database from "../editor/components/db/Database";
-import LoadProvider from "../editor/hook/LoadProvider";
-import EVENTS from "../editor/utils/misc/EVENTS";
+
 import Head from 'next/head'
+import useSettings from "../views/editor/hook/useSettings";
+import useEngine from "../views/editor/hook/useEngine";
+import LoadProvider from "../views/editor/hook/LoadProvider";
+import useSerializer from "../views/editor/hook/useSerializer";
+import Database from "../components/db/Database";
+import EVENTS from "../views/editor/utils/misc/EVENTS";
+import Maker from "../views/editor/utils/classes/Maker";
+import loadProject, {loadEntities} from "../views/editor/utils/parsers/loadProjectData";
+import DatabaseProvider from "../components/db/DatabaseProvider";
+import Editor from "../views/editor/Editor";
 
 
 export default function Project() {
@@ -68,6 +71,7 @@ export default function Project() {
 
     return (
         <DatabaseProvider.Provider value={database}>
+
             <Head>
                 <title>{settings.projectName}</title>
             </Head>
