@@ -21,7 +21,7 @@ export default function MeshVisualizer(props) {
             load.pushEvent(EVENTS.LOADING_VIEWPORT)
             database.getFileWithBlob(props.file.fileID)
                 .then(res => {
-                    
+
                     load.finishEvent(EVENTS.LOADING_VIEWPORT)
                     initializeMesh(JSON.parse(decodeURI(res.blob)), engine.gpu, engine.id, res.name, engine.dispatchEntities, engine.setMeshes)
                 })
