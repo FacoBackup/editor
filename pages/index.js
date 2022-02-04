@@ -1,4 +1,4 @@
-import {Alert, Button, Card, Masonry, Modal, TextField, ToolTip,} from "@f-ui/core";
+import {Alert, Button, Modal, TextField,} from "@f-ui/core";
 import styles from '../styles/Home.module.css'
 import React, {useContext, useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
@@ -8,7 +8,8 @@ import Database from "../components/db/Database";
 import EVENTS from "../views/editor/utils/misc/EVENTS";
 import randomID from "../views/editor/utils/misc/randomID";
 import Maker from "../views/editor/utils/classes/Maker";
-import ContextMenu from "../components/context/ContextMenu";
+import Projects from "../components/projects/Projects";
+import ThemeProvider from "../views/editor/hook/ThemeProvider";
 
 
 export default function Home(props) {
@@ -20,29 +21,29 @@ export default function Home(props) {
     const [database, setDatabase] = useState()
     const load = useContext(LoadProvider)
     const uploadRef = useRef()
-
-    useEffect(() => {
-        load.pushEvent(EVENTS.PROJECT_LIST)
-        setDatabase(new Database('FS'))
-    }, [])
-    const refresh = () => {
-        database?.listProject()
+    const theme = useContext(ThemeProvider)
+    const refresh = (db) => {
+        db?.listProject()
             .then(res => {
 
                 setProjects(res.map(re => {
                     return {
                         ...re,
-                        settings:JSON.parse(re.settings)
+                        meta: JSON.parse(re.meta),
+                        settings: JSON.parse(re.settings)
                     }
                 }))
                 load.finishEvent(EVENTS.PROJECT_LIST)
             })
     }
-    useEffect(() => {
 
-        if (database)
-            refresh()
-    }, [database])
+    useEffect(() => {
+        load.pushEvent(EVENTS.PROJECT_LIST)
+        const db = new Database('FS')
+        setDatabase(db)
+        refresh(db)
+    }, [])
+
 
     return (
         <div className={styles.wrapper}>
@@ -65,11 +66,17 @@ export default function Home(props) {
                     disabled={projectName === ''}
                     className={styles.submitButton}
                     onClick={() => {
-
+                        const now = (new Date()).toDateString()
                         const newData = {
                             id: randomID(),
+                            meta: JSON.stringify({
+                                lastModification: now,
+                                entities: 0,
+                                meshes: 0,
+                                materials: 0
+                            }),
                             settings: JSON.stringify({
-                                projectCreationDate: (new Date()).toDateString(),
+                                projectCreationDate: now,
                                 showFPS: false,
                                 lightCalculations: true,
                                 shadowMapping: true,
@@ -87,7 +94,11 @@ export default function Home(props) {
                                     message: 'Project created.'
                                 })
                                 setProjects(prev => {
-                                    return [...prev, newData]
+                                    return [...prev, {
+                                        ...newData,
+                                        settings: JSON.parse(newData.settings),
+                                        meta: JSON.parse(newData.meta)
+                                    }]
                                 })
                                 setProjectName('')
                                 setOpenModal(false)
@@ -106,126 +117,64 @@ export default function Home(props) {
                     </div>
                 </div>
 
-                <Button
-                    className={styles.optionButton}
-                    variant={'outlined'}
-                    onClick={() => setOpenModal(true)}>
-                    New project
-                </Button>
-                <input style={{display: 'none'}}
-                       type={'file'}
-                       accept={['.projection']}
-                       onChange={f => {
-                           load.pushEvent(EVENTS.PROJECT_IMPORT)
-                           Maker.parse(f.target.files[0], database)
-                               .then((res) => {
-                                   let promises = []
-
-                                   res.forEach(data => {
-                                       const parsed = JSON.parse(data.data)
-                                       if (data.type === 0)
-                                           promises.push(new Promise(resolve => {
-                                               database?.postProject({id: parsed.id, settings: JSON.stringify(parsed.settings)}).then(() => resolve()).catch(() => resolve())
-                                           }))
-                                       else if (data.type === 1)
-                                           promises.push(new Promise(resolve => {
-                                               database?.postFileWithBlob(parsed, parsed.blob).then(() => resolve()).catch(() => resolve())
-                                           }))
-                                       else if (data.type === 2)
-                                           promises.push(new Promise(resolve => database?.postEntity(parsed).then(() => resolve()).catch(() => resolve())))
-                                   })
-
-                                   Promise.all(promises).then(() => {
-                                       load.finishEvent(EVENTS.PROJECT_IMPORT)
-                                       refresh()
-                                   })
-                               })
-                           f.target.value = ''
-                       }}
-                       ref={uploadRef}/>
-                <Button
-                    className={styles.optionButton}
-                    variant={'outlined'}
-                    onClick={() => uploadRef.current.click()}>
-                    Load project
-                </Button>
-
-                <div className={styles.footer}>
-                    <Button className={styles.footerButton} variant={"outlined"}>
-                        <a href={'https://github.com/projection-engine'} target="_blank" className={styles.footerIcon}
-                        >
-                            <img src={'./github/' + (!props.dark ? 'dark' : 'light') + '.svg'} alt={'github'}/>
-                        </a>
-                        <ToolTip align={'middle'} justify={'end'}>
-                            Projection engine on github
-                        </ToolTip>
+                <div style={{display: 'flex', gap: '4px'}}>
+                    <Button onClick={() => theme.setDark(!theme.dark)} className={styles.button} variant={'outlined'}>
+                        <span className={'material-icons-round'}>{theme.dark ? 'dark_mode' : 'light_mode'}</span>
                     </Button>
+
+                    <Button onClick={() => window.open('https://github.com/projection-engine')}
+                            className={styles.button}
+                            variant={'outlined'}>
+                        <img style={{width: '30px'}} alt={'github'}
+                             src={'./github/' + (!theme.dark ? 'dark' : 'light') + '.svg'}/>
+                    </Button>
+
                 </div>
             </div>
-            <div className={styles.masonryWrapper}>
-                <h1 className={styles.masonryTitle}>
-                    Your projects
-                </h1>
-                <ContextMenu triggers={['data-card']} options={[
-                    {
-                        requiredTrigger: 'data-card',
 
-                        label: 'Open project',
-                        onClick: (node) => router.push('/project?id=' + node.getAttribute('data-card')),
-                        icon: <span className={'material-icons-round'}>open_in_new</span>
-                    },
-                    {
-                        requiredTrigger: 'data-card',
+            <input style={{display: 'none'}}
+                   type={'file'}
+                   accept={['.projection']}
+                   onChange={f => {
+                       load.pushEvent(EVENTS.PROJECT_IMPORT)
+                       Maker.parse(f.target.files[0], database)
+                           .then((res) => {
+                               let promises = []
 
-                        label: 'Delete project',
-                        onClick: (node) => {
-                            const id = node.getAttribute('data-card')
-                            load.pushEvent(EVENTS.PROJECT_DELETE)
-                            database.deleteProject(id)
-                                .then(() => {
-                                    setAlert({
-                                        type: 'success',
-                                        message: 'Project deleted.'
-                                    })
-                                    setProjects(prev => {
-                                        return prev.filter(p => p.id !== id)
-                                    })
-                                    load.finishEvent(EVENTS.PROJECT_DELETE)
-                                })
-                        },
-                        icon: <span className={'material-icons-round'}>delete</span>
-                    }
-                ]}>
-                    {projects.length > 0 ?
-                        <Masonry width={'100%'}>
-                            {projects.map((p, i) => (
+                               res.forEach(data => {
+                                   const parsed = JSON.parse(data.data)
+                                   if (data.type === 0)
+                                       promises.push(new Promise(resolve => {
+                                           database?.postProject({
+                                               id: parsed.id,
+                                               settings: JSON.stringify(parsed.settings)
+                                           }).then(() => resolve()).catch(() => resolve())
+                                       }))
+                                   else if (data.type === 1)
+                                       promises.push(new Promise(resolve => {
+                                           database?.postFileWithBlob(parsed, parsed.blob).then(() => resolve()).catch(() => resolve())
+                                       }))
+                                   else if (data.type === 2)
+                                       promises.push(new Promise(resolve => database?.postEntity(parsed).then(() => resolve()).catch(() => resolve())))
+                               })
 
-                                <Card
-                                    attributes={{
-                                        'data-card': p.id
-                                    }}
-                                    onClick={() => router.push('/project?id=' + p.id)} className={styles.card}>
-                                    <div style={{maxWidth: '100%', overflow: 'hidden'}}>
-                                        <img
-                                            className={styles.preview}
-                                            src={p.settings.preview ? p.settings.preview : './LOGO.png'}
-                                            alt={'preview'}
-                                        />
-                                        {p.settings.projectName}
-                                    </div>
-                                </Card>
+                               Promise.all(promises).then(() => {
+                                   load.finishEvent(EVENTS.PROJECT_IMPORT)
+                                   refresh()
+                               })
+                           })
+                       f.target.value = ''
+                   }}
+                   ref={uploadRef}/>
 
-                            ))}
-                        </Masonry>
-                        :
-                        <div className={styles.empty}>
-                            <span className={'material-icons-round'} style={{fontSize: '5rem'}}>folder</span>
-                            Nothing here.
-                        </div>
-                    }
-                </ContextMenu>
-            </div>
+            <Projects
+                onNew={() => setOpenModal(true)}
+                onLoad={() => uploadRef.current.click()}
+                database={database}
 
+                refresh={() => refresh(database)} load={load} projects={projects}
+                redirect={uri => router.push(uri)}
+                setProjects={setProjects}/>
         </div>
     )
 }

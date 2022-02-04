@@ -54,12 +54,17 @@ export default function useSerializer(engine, database, setAlert, settings, id) 
 
                 const canvas = document.getElementById(id + '-canvas')
 
-                database.table('project').update(id, {
+                database.updateProject(id, {
                     id,
-                    settings: JSON.stringify({
-                        ...settings.savable,
-                        preview: canvas.toDataURL()
-                    })
+                    meta: JSON.stringify({
+                        preview: canvas.toDataURL(),
+                        entities: engine.entities.length,
+                        meshes: engine.meshes.length,
+                        materials: engine.materials.length,
+                        lastModification: (new Date()).toDateString(),
+                        creation: settings.creationDate
+                    }),
+                    settings: JSON.stringify(settings.savable)
                 }).then(() => {
                     if (isLast) {
                         setAlert({

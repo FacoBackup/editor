@@ -20,7 +20,7 @@ import MeshComponent from "../../../services/engine/ecs/components/MeshComponent
 import TransformComponent from "../../../services/engine/ecs/components/TransformComponent";
 import Mesh from "../../../services/engine/renderer/elements/Mesh";
 
-export default function useVisualizer(initializePlane, initializeSphere) {
+export default function useVisualizer(initializePlane, initializeSphere, shadows) {
     const [id, setId] = useState()
     const [gpu, setGpu] = useState()
     const [meshes, setMeshes] = useState([])
@@ -66,12 +66,19 @@ export default function useVisualizer(initializePlane, initializeSphere) {
                 initializeMesh(sphereMesh, gpu, randomID(), 'Sphere', dispatchEntities, setMeshes)
 
             renderer.current = new Engine(id, gpu)
+            if(shadows)
             renderer.current.systems = [
                 new TransformSystem(),
                 new ShadowMapSystem(gpu),
                 new DeferredSystem(gpu, 1),
                 new PostProcessingSystem(gpu, 1)
             ]
+            else
+                renderer.current.systems = [
+                    new TransformSystem(),
+                    new DeferredSystem(gpu, 1),
+                    new PostProcessingSystem(gpu, 1)
+                ]
             setInitialized(true)
 
             parseEngineEntities({meshes, materials}, entities, materials, meshes, renderer.current)

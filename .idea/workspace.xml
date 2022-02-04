@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/checkout.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commit.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/meshes/plane.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/meshes/sphere.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/material" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/mesh/MeshVisualizer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/mesh/components/Controls.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/mesh/forms/CollisionComponent.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/mesh/forms/PhysicsBodyComponent.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/mesh/hook/useVisualizer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/mesh/styles/Mesh.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/engine" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/files" beforeDir="false" afterPath="$PROJECT_DIR$/views/files" afterDir="false" />
-    </list>
+    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -64,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/services/engine/renderer/shaders/deferred/resources" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -76,6 +56,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\editor\services\engine\renderer\shaders\deferred\resources" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\public" />
       <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap" />
       <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap\resources" />
@@ -111,6 +92,7 @@
       <workItem from="1643915378519" duration="4624000" />
       <workItem from="1643921766329" duration="1794000" />
       <workItem from="1643924686833" duration="8661000" />
+      <workItem from="1643978031636" duration="7114000" />
     </task>
     <servers />
   </component>
