@@ -114,7 +114,7 @@ export default function TransformComponent(props) {
                     accentColor={'red'}
                     label={'x'}
                     value={state.xR}
-                    onFinish={() => props.submitRotation('x', state.xR)}
+                    onFinish={() => props.submitRotation('x', state.xR* Math.PI / 180)}
                     handleChange={e => {
                         props.selected.rotation = [parseFloat(e) * Math.PI / 180, props.selected.rotation[1], props.selected.rotation[2]]
 
@@ -125,7 +125,7 @@ export default function TransformComponent(props) {
                     accentColor={'#00ff00'}
                     label={'y'}
                     value={state.yR}
-                    onFinish={() => props.submitRotation('y', state.yR)}
+                    onFinish={() => props.submitRotation('y', state.yR* Math.PI / 180)}
                     handleChange={e => {
                         props.selected.rotation = [props.selected.rotation[0], parseFloat(e) * Math.PI / 180, props.selected.rotation[2]]
                         setState({...state, yR: parseFloat(e)})
@@ -135,7 +135,7 @@ export default function TransformComponent(props) {
 
                     label={'z'}
                     value={state.zR}
-                    onFinish={() => props.submitRotation('z', state.zR)}
+                    onFinish={() => props.submitRotation('z', state.zR* Math.PI / 180)}
                     handleChange={e => {
                         props.selected.rotation = [props.selected.rotation[0], props.selected.rotation[2], parseFloat(e) * Math.PI / 180]
                         setState({...state, zR: parseFloat(e)})

@@ -1,4 +1,4 @@
-import importMesh from "../parsers/importMesh";
+import importMesh from "./parsers/importMesh";
 
 export default function handleDrop(event, database, engine, setAlert) {
     let data = event.dataTransfer.getData("text")

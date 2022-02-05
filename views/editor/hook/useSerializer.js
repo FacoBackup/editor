@@ -11,7 +11,7 @@ export default function useSerializer(engine, database, setAlert, settings, id) 
 
     const saveEntities = () => {
         let promises = []
-        engine.entities.forEach(e => {
+        engine.entities.filter(e => !e.components.GridComponent).forEach(e => {
             promises.push(new Promise((resolve) => {
                 let blob = {...e.components}
 

@@ -22,5 +22,6 @@ export default {
 
     REFRESHING: 'Refreshing files',
     LOADING_VIEWPORT: 'Loading viewport',
-    PACKAGING_DATA: 'Packaging data for download.'
+    PACKAGING_DATA: 'Packaging data for download.',
+    LOADING_MATERIAL: 'Loading material'
 }

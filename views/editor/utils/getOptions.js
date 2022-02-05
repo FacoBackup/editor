@@ -120,7 +120,7 @@ export default function getOptions(executingAnimation, setExecutingAnimation, en
             label: 'Scripting',
             type: 'dropdown',
             options: [{
-                label: 'New Material',
+                label: 'New MaterialInstance',
                 icon: <span className={'material-icons-round'}
                             style={{fontSize: '1.2rem'}}>public</span>,
                 onClick: () => null

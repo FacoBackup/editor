@@ -13,6 +13,7 @@ import TransformComponent from "../../../../services/engine/ecs/components/Trans
 import FolderComponent from "../../../../services/engine/ecs/components/FolderComponent";
 import PhysicsBodyComponent from "../../../../services/engine/ecs/components/PhysicsBodyComponent";
 import ColliderComponent from "../../../../services/engine/ecs/components/ColliderComponent";
+import MaterialInstance from "../../../../services/engine/renderer/elements/MaterialInstance";
 
 
 export default function loadProject(database, engine, settings, setAlert, id, redirect, callback) {
@@ -111,7 +112,7 @@ function loadData(entities, callback, engine, database) {
                     file,
                     database,
                     engine.gpu,
-                    (mat, textures) => engine.setMaterials(prev => [...prev, new Material(engine.gpu, mat.id, textures[0], textures[1], textures[2], textures[3], textures[4], textures[5])])
+                    (mat, textures) => engine.setMaterials(prev => [...prev, new MaterialInstance(engine.gpu, mat.id, textures[0], textures[1], textures[2], textures[3], textures[4], textures[5])])
                 )
             }
         })

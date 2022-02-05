@@ -25,7 +25,6 @@ export default function Home(props) {
     const refresh = (db) => {
         db?.listProject()
             .then(res => {
-                console.log(res)
                 setProjects(res.map(re => {
                     return {
                         ...re,
@@ -39,6 +38,7 @@ export default function Home(props) {
 
     useEffect(() => {
         load.pushEvent(EVENTS.PROJECT_LIST)
+        load.finishEvent(EVENTS.PROJECT_SETTINGS)
         const db = new Database('FS')
         setDatabase(db)
         refresh(db)

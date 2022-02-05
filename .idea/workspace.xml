@@ -5,14 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/views/material/templates/MaterialAvailable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/material/workflows/material/Color.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.sh" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/context/styles/Context.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/context/styles/Context.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/db/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/db/Database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/preferences/Preferences.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/preferences/Preferences.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tree/TreeNode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tree/TreeNode.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tree/TreeView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tree/TreeView.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/engine" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/engine/ecs/components/TransformComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/ecs/components/TransformComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/files/utils/import/handleImportFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/utils/import/handleImportFile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/camera/Camera.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/camera/Camera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/camera/SphericalCamera.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/camera/SphericalCamera.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/camera/cameraEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/camera/cameraEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/ecs/components/SkyboxComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/ecs/components/SkyboxComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/ecs/systems/DeferredSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/ecs/systems/DeferredSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/ecs/utils/entityReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/ecs/utils/entityReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/renderer/elements/CubeMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/renderer/elements/CubeMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/renderer/elements/Material.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/renderer/elements/MaterialInstance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/renderer/shaders/deferred/resources/deferredFragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/renderer/shaders/deferred/resources/deferredFragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files/hooks/useDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/hooks/useDB.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files/hooks/useItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/hooks/useItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files/styles/ItemCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/styles/ItemCard.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/files/utils/parsers/resizeImageToPreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/utils/parsers/resizeImageToPreview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files/utils/visuals/getIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/utils/visuals/getIcon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/Material.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/Material.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/components/Available.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/components/Available.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/components/Board.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/components/Board.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/components/Node.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/components/Node.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/components/NodeEditor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/components/NodeEditor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/constants/Types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/hooks/useBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/hooks/useBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/hooks/usePrototype.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/hooks/usePrototype.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/styles/Board.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/styles/Board.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/styles/NodeEditor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/styles/NodeEditor.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/utils/handleDropBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/utils/handleDropBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/utils/makePackage.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/utils/makePackage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/utils/parseNodes.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/utils/parseNodes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/available/AlgebraAvailable.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/templates/AlgebraAvailable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/AddVector.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/AddVector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/CrossProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/CrossProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/DotProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/DotProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/SubtractVector.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/SubtractVector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/Vector2D.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/Vector2D.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/Vector3D.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/Vector3D.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/Vector4D.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/Vector4D.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/algebra/templates/VectorScalar.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/algebra/VectorScalar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/basic/available/BasicAvailable.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/templates/BasicAvailable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/basic/templates/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/basic/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/basic/templates/Constant.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/basic/Constant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/basic/templates/Divide.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/basic/Divide.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/basic/templates/Multiply.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/basic/Multiply.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/basic/templates/Power.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/basic/Power.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/basic/templates/Subtract.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/basic/Subtract.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/material/available/MaterialAvailable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/material/templates/PBRMaterial.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/material/Material.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/material/templates/Rgb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/material/templates/Rgba.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/material/workflows/material/templates/TextureSample.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/material/workflows/material/TextureSample.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/mesh/hook/useVisualizer.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/mesh/hook/useVisualizer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,13 +72,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
+        <option value="GLSL Shader" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/views/files" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/views/material" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -71,11 +122,11 @@
       <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\views" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\services\engine\assets" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\public\meshes" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\services\engine" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\editor\utils" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\material\workflows\algebra" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\material\workflows\basic" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\material\workflows\material" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\material\templates" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -104,6 +155,7 @@
       <workItem from="1643978031636" duration="8417000" />
       <workItem from="1643996496882" duration="762000" />
       <workItem from="1643999218239" duration="6869000" />
+      <workItem from="1644062080382" duration="22066000" />
     </task>
     <servers />
   </component>

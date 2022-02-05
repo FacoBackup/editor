@@ -2,7 +2,7 @@ import {useContext, useEffect, useMemo, useRef, useState} from "react";
 
 import {Alert} from "@f-ui/core";
 
-import handleDrop from "./utils/handlers/handleDrop";
+import handleDrop from "./utils/handleDrop";
 import useTabs from "./hook/useTabs";
 import getOptions from "./utils/getOptions";
 import PropTypes from "prop-types";
@@ -19,6 +19,7 @@ import ResizableBar from "../../components/resizable/ResizableBar";
 import Scene from "../scene/Scene";
 import Tabs from "../../components/tabs/Tabs";
 import Explorer from "../files/Explorer";
+import EVENTS from "./utils/misc/EVENTS";
 
 export default function Editor(props) {
 
@@ -161,8 +162,8 @@ export default function Editor(props) {
                         currentTab={currentTab}
                         label={'Explorer'} id={props.id}
                         openEngineFile={(fileID, fileName) => {
-
                             if (!filesLoaded.find(file => file.fileID === fileID)) {
+                                props.load.pushEvent(EVENTS.LOAD_FILE)
                                 database.getFileWithBlob(fileID).then(res => {
                                     setFilesLoaded(prev => [...prev, {
                                         blob: res.blob,
@@ -170,6 +171,7 @@ export default function Editor(props) {
                                         fileID: fileID,
                                         type: res.type
                                     }])
+                                    props.load.finishEvent(EVENTS.LOAD_FILE)
                                 })
                             }
                         }}
@@ -190,7 +192,7 @@ Editor.propTypes = {
     setAlert: PropTypes.func.isRequired,
     settings: PropTypes.object.isRequired,
     engine: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     packageMaker: PropTypes.object.isRequired,
 
     savingAlert: PropTypes.bool.isRequired,

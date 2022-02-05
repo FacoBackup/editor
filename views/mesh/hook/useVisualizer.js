@@ -32,7 +32,6 @@ export default function useVisualizer(initializePlane, initializeSphere, shadows
     let resizeObserver
 
     useLayoutEffect(() => {
-        // load.pushEvent(EVENTS.LOADING_VIEWPORT)
         setId(randomID())
     }, [])
 
@@ -60,19 +59,23 @@ export default function useVisualizer(initializePlane, initializeSphere, shadows
             initializeSkybox(dispatchEntities, gpu)
             initializeLight(dispatchEntities)
 
-            if(initializePlane)
-                initializeMesh(planeMesh, gpu, randomID(), 'Plane', dispatchEntities, setMeshes)
-            if(initializeSphere)
-                initializeMesh(sphereMesh, gpu, randomID(), 'Sphere', dispatchEntities, setMeshes)
+            if (initializePlane)
+                initializeMesh(planeMesh, gpu, IDS.PLANE, 'Plane', dispatchEntities, setMeshes)
+            if (initializeSphere)
+                initializeMesh(sphereMesh, gpu, IDS.SPHERE, 'Sphere', dispatchEntities, setMeshes)
 
             renderer.current = new Engine(id, gpu)
-            if(shadows)
-            renderer.current.systems = [
-                new TransformSystem(),
-                new ShadowMapSystem(gpu),
-                new DeferredSystem(gpu, 1),
-                new PostProcessingSystem(gpu, 1)
-            ]
+
+            if (initializeSphere)
+                renderer.current.camera.centerLookAt = sphereMesh.translation
+
+            if (shadows)
+                renderer.current.systems = [
+                    new TransformSystem(),
+                    new ShadowMapSystem(gpu),
+                    new DeferredSystem(gpu, 1),
+                    new PostProcessingSystem(gpu, 1)
+                ]
             else
                 renderer.current.systems = [
                     new TransformSystem(),
@@ -85,7 +88,7 @@ export default function useVisualizer(initializePlane, initializeSphere, shadows
         } else if (gpu && id) {
 
             resizeObserver = new ResizeObserver(() => {
-                if ( initialized)
+                if (initialized)
                     renderer.current.camera.aspectRatio = gpu?.canvas.width / gpu?.canvas.height
             })
             resizeObserver.observe(document.getElementById(id + '-canvas'))
@@ -104,17 +107,18 @@ export default function useVisualizer(initializePlane, initializeSphere, shadows
 
 
     return {
-        id,load,
+        id, load,
         entities, dispatchEntities,
         meshes, setMeshes, gpu,
         materials, setMaterials,
         initialized
     }
 }
-function initializeSkybox(dispatch,gpu){
+
+function initializeSkybox(dispatch, gpu) {
     const newEntity = new Entity(undefined, 'sky')
     const sky = new SkyboxComponent(undefined, gpu)
-    sky.hdrTexture = {blob: '/default_skybox.jpg',imageID: undefined, type: 'jpg'}
+    sky.hdrTexture = {blob: '/default_skybox.jpg', imageID: undefined, type: 'jpg'}
     dispatch({
         type: ENTITY_ACTIONS.ADD,
         payload: newEntity
@@ -127,7 +131,8 @@ function initializeSkybox(dispatch,gpu){
         }
     })
 }
-function initializeLight(dispatch){
+
+function initializeLight(dispatch) {
     const newEntity = new Entity(undefined, 'light')
     const light = new DirectionalLightComponent()
     light.direction = [0, 100, 100]
@@ -143,17 +148,18 @@ function initializeLight(dispatch){
         }
     })
 }
+
 export function initializeMesh(data, gpu, id, name, dispatch, setMeshes) {
     let mesh = new Mesh({
         ...data,
-        id: id,
+        id: randomID(),
         gpu: gpu,
         maxBoundingBox: data.boundingBoxMax,
         minBoundingBox: data.boundingBoxMin
     })
     setMeshes(prev => [...prev, mesh])
 
-    const newEntity = new Entity(undefined, name)
+    const newEntity = new Entity(id, name)
 
     const transformation = new TransformComponent()
     transformation.scaling = data.scaling
@@ -185,4 +191,11 @@ export function initializeMesh(data, gpu, id, name, dispatch, setMeshes) {
             entityID: newEntity.id
         }
     })
+
+
+}
+
+export const IDS = {
+    SPHERE: 'SPHERE-0',
+    PLANE: 'PLANE-0'
 }

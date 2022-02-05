@@ -12,7 +12,7 @@ import {Button} from "@f-ui/core";
 import getTabIcon from "./getTabIcon";
 import {ENTITY_ACTIONS} from "../../../services/engine/ecs/utils/entityReducer";
 import ColliderComponent from "../../../services/engine/ecs/components/ColliderComponent";
-import Material from "../../../services/engine/renderer/elements/Material";
+import MaterialInstance from "../../../services/engine/renderer/elements/MaterialInstance";
 
 export default function useForm(
     engine,
@@ -128,7 +128,7 @@ export default function useForm(
                             let found = engine.materials.find(m => m.id === mat.id)
                             if (!found)
                                 engine.setMaterials(prev => {
-                                    return [...prev, new Material(engine.gpu, mat.id, textures[0], textures[1], textures[2], textures[3], textures[4], textures[5])]
+                                    return [...prev, new MaterialInstance(engine.gpu, mat.id, textures[0], textures[1], textures[2], textures[3], textures[4], textures[5])]
                                 })
 
                             selected.components.MaterialComponent.materialID = mat.id
