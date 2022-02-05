@@ -16,9 +16,9 @@ import useQuickAccess from "../../components/db/useQuickAccess";
 import ViewportOptions from "../../components/viewport/ViewportOptions";
 import Viewport from "../../components/viewport/Viewport";
 import ResizableBar from "../../components/resizable/ResizableBar";
-import Scene from "../scene/Scene";
+import SceneView from "../scene/SceneView";
 import Tabs from "../../components/tabs/Tabs";
-import Explorer from "../files/Explorer";
+import FilesView from "../files/FilesView";
 import EVENTS from "./utils/misc/EVENTS";
 
 export default function Editor(props) {
@@ -61,7 +61,7 @@ export default function Editor(props) {
 
     const {
         meshes,
-
+        images,
         materials
     } = useTabs(
         filesLoaded,
@@ -72,7 +72,7 @@ export default function Editor(props) {
         props.setAlert
     )
 
-    const files = useQuickAccess(props.id)
+    const files = useQuickAccess(props.id, props.load)
 
 
     return (
@@ -139,7 +139,7 @@ export default function Editor(props) {
                                     {props.settings.visibility.scene ?
                                         <>
                                             <ResizableBar type={'width'}/>
-                                            <Scene
+                                            <SceneView
                                                 executingAnimation={props.executingAnimation}
                                                 hierarchy={props.engine.hierarchy}
                                                 setAlert={props.setAlert}
@@ -152,15 +152,15 @@ export default function Editor(props) {
                         },
                         ...materials,
                         ...meshes,
-
+                        ...images
                     ]}
                 />
 
                 {props.settings.visibility.files ?
-                    <Explorer
+                    <FilesView
                         setAlert={props.setAlert}
                         currentTab={currentTab}
-                        label={'Explorer'} id={props.id}
+                        label={'FilesView'} id={props.id}
                         openEngineFile={(fileID, fileName) => {
                             if (!filesLoaded.find(file => file.fileID === fileID)) {
                                 props.load.pushEvent(EVENTS.LOAD_FILE)

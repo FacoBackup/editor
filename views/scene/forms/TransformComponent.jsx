@@ -137,7 +137,7 @@ export default function TransformComponent(props) {
                     value={state.zR}
                     onFinish={() => props.submitRotation('z', state.zR* Math.PI / 180)}
                     handleChange={e => {
-                        props.selected.rotation = [props.selected.rotation[0], props.selected.rotation[2], parseFloat(e) * Math.PI / 180]
+                        props.selected.rotation = [props.selected.rotation[0], props.selected.rotation[1], parseFloat(e) * Math.PI / 180]
                         setState({...state, zR: parseFloat(e)})
                     }}
                 />

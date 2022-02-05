@@ -15,7 +15,7 @@ import {Button} from "@f-ui/core";
 import Search from "../../components/search/Search";
 import ResizableBar from "../../components/resizable/ResizableBar";
 
-export default function Scene(props) {
+export default function SceneView(props) {
     const database = useContext(DatabaseProvider)
     const quickAccess = useContext(QuickAccessProvider)
 
@@ -25,14 +25,14 @@ export default function Scene(props) {
         let toFilter = props.engine.entities.filter(d => !d.linkedTo && !d.components.GridComponent && (searchString.length > 0 ?  d.name.toLowerCase().includes(searchString) : true))
         return [{
             id: 0,
-            label: 'Scene',
+            label: 'SceneView',
             children: toFilter.map(f => {
                 return mapToView(f, props.engine.entities, (el) => {
                     props.engine.setSelectedElement(el)
                 })
             }),
             icon: <span className={'material-icons-round'} style={{fontSize: '1rem'}}>inventory_2</span>,
-            type: 'Scene entity',
+            type: 'SceneView entity',
             phantomNode: true
         }]
     }, [props.engine.entities, searchString])
@@ -148,7 +148,7 @@ export default function Scene(props) {
     )
 }
 
-Scene.propTypes = {
+SceneView.propTypes = {
     executingAnimation: PropTypes.bool,
     setAlert: PropTypes.func.isRequired,
     engine: PropTypes.object,

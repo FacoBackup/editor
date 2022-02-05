@@ -1,16 +1,17 @@
 import {useMemo} from "react";
 
-import MeshVisualizer from "../../mesh/MeshVisualizer";
-import Material from "../../material/Material";
-import resizeImageToPreview from "../../files/utils/parsers/resizeImageToPreview";
+import MeshView from "../../mesh/MeshView";
+import MaterialView from "../../material/MaterialView";
+import ImageView from "../../image/ImageView";
 
 
 export default function useTabs(filesLoaded, currentTab, setCurrentTab, setFilesLoaded, database, setAlert) {
-    const mapFile = (file, index, children) => {
+    const mapFile = (file, index, children, i) => {
+        console.log(i)
         return {
             canClose: true,
             icon: <span style={{fontSize: '1.2rem'}}
-                        className={`material-icons-round`}>public</span>,
+                        className={`material-icons-round`}>{i}</span>,
             handleClose: () => {
                 if (index === (currentTab + 1))
                     setCurrentTab(filesLoaded.length)
@@ -28,7 +29,7 @@ export default function useTabs(filesLoaded, currentTab, setCurrentTab, setFiles
     }
     const materials = useMemo(() => {
         return filesLoaded.filter(f => f.type === 'material').map((file, index) => mapFile(file, index, (
-            <Material
+            <MaterialView
                 workflow={'PBRMaterial'}
                 setAlert={setAlert}
                 submitPackage={(previewImage, pack, close) => {
@@ -58,19 +59,24 @@ export default function useTabs(filesLoaded, currentTab, setCurrentTab, setFiles
                     }
                 }}
                 file={JSON.parse(file.blob)}/>
-        )))
+        ), 'texture'))
     }, [filesLoaded])
 
     const meshes = useMemo(() => {
         return filesLoaded.filter(f => f.type === 'mesh').map((file, index) => mapFile(file, index, (
-            <MeshVisualizer file={file} setAlert={setAlert}/>
-        )))
+            <MeshView file={file} setAlert={setAlert}/>
+        ), 'view_in_ar'))
     }, [filesLoaded])
 
-
+    const images =  useMemo(() => {
+        return filesLoaded.filter(f => f.type === 'image').map((file, index) => mapFile(file, index, (
+            <ImageView file={file}/>
+        ), 'image'))
+    }, [filesLoaded])
     return {
         meshes,
-        materials
+        materials,
+        images
     }
 
 }

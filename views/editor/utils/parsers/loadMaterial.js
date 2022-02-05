@@ -1,4 +1,4 @@
-import {colorToImage} from "../../../../services/engine/utils/imageManipulation";
+import ImageProcessor from "../../../../services/workers/ImageProcessor";
 
 export function getFetchPromise(obj, database, allData = false,) {
     return new Promise((resolve) => {
@@ -8,7 +8,7 @@ export function getFetchPromise(obj, database, allData = false,) {
                 .then(res => resolve(res))
                 .catch(() => resolve())
         else if (obj.type === 'string')
-            resolve(colorToImage(obj.ref))
+            resolve(ImageProcessor.colorToImage(obj.ref))
         else
             resolve()
     })

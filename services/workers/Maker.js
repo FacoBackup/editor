@@ -1,6 +1,6 @@
 import JSZip from 'jszip'
 import saveAs from 'file-saver'
-import EVENTS from "../misc/EVENTS";
+import EVENTS from "../../views/editor/utils/misc/EVENTS";
 
 export default class Maker {
     _canDownload = true

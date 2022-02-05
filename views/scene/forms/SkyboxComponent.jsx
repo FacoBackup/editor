@@ -24,6 +24,7 @@ export default function SkyboxComponent(props) {
 
         <div className={styles.formWrapper}>
             <Selector
+                type={'image'}
                 availableTextures={props.quickAccess.images}
                 selected={currentImage}
                 handleChange={(src) => {

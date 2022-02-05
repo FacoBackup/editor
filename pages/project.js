@@ -12,7 +12,7 @@ import LoadProvider from "../views/editor/hook/LoadProvider";
 import useSerializer from "../views/editor/hook/useSerializer";
 import Database from "../components/db/Database";
 import EVENTS from "../views/editor/utils/misc/EVENTS";
-import Maker from "../views/editor/utils/classes/Maker";
+import Maker from "../services/workers/Maker";
 import loadProject, {loadEntities} from "../views/editor/utils/parsers/loadProjectData";
 import DatabaseProvider from "../components/db/DatabaseProvider";
 import Editor from "../views/editor/Editor";
@@ -37,7 +37,6 @@ export default function Project() {
     useEffect(() => {
         if (router.isReady)
             setId(router.query.id)
-
     }, [router.isReady])
     useEffect(() => {
         if (database && id) {

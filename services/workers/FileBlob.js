@@ -1,4 +1,4 @@
-import {WebWorker} from "./Worker";
+import {WebWorker} from "./WebWorker";
 
 export default class FileBlob {
     static loadAsString(file, binary, dataURL) {

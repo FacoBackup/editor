@@ -7,7 +7,7 @@ import LoadProvider from "../views/editor/hook/LoadProvider";
 import Database from "../components/db/Database";
 import EVENTS from "../views/editor/utils/misc/EVENTS";
 import randomID from "../views/editor/utils/misc/randomID";
-import Maker from "../views/editor/utils/classes/Maker";
+import Maker from "../services/workers/Maker";
 import Projects from "../components/projects/Projects";
 import ThemeProvider from "../views/editor/hook/ThemeProvider";
 
@@ -60,7 +60,7 @@ export default function Home(props) {
                     handleChange={e => setProjectName(e.target.value)}
                     label={'Project name'}
                     placeholder={'Project name'}
-                    value={projectName}/>
+                    value={projectName} size={'small'}/>
                 <Button
                     variant={'filled'}
                     disabled={projectName === ''}
