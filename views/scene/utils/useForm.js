@@ -124,7 +124,7 @@ export default function useForm(
                         database={database}
                         selected={selected.components.MaterialComponent}
                         submit={(mat, textures) => {
-                            console.log(mat, textures)
+
                             let found = engine.materials.find(m => m.id === mat.id)
                             if (!found)
                                 engine.setMaterials(prev => {
@@ -152,14 +152,9 @@ export default function useForm(
                     <LightComponent
                         type={key}
                         selected={selected.components[key]}
-                        submitAttenuation={(field, data) => {
+                        submit={(data, k) => {
                             const component = selected.components[key]
-                            const prev = component['attenuation']
-                            component['attenuation'] = [
-                                field === 'x' ? data : prev[0],
-                                field === 'y' ? data : prev[1],
-                                field === 'z' ? data : prev[2]
-                            ]
+                            component[k] = data
                             engine.dispatchEntities({
                                 type: ENTITY_ACTIONS.UPDATE_COMPONENT, payload: {
                                     entityID: selectedElement,
@@ -168,6 +163,7 @@ export default function useForm(
                                 }
                             })
                         }}
+
                         quickAccess={quickAccess}
                         database={database}
                         submitPlacement={(axis, data) => {

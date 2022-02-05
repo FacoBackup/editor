@@ -12,22 +12,23 @@ export default function useSerializer(engine, database, setAlert, settings, id) 
     const saveEntities = () => {
         let promises = []
         engine.entities.forEach(e => {
-            let blob = {...e.components}
-            if (e.components.TransformComponent)
-                blob.TransformComponent = {
-                    scaling: e.components.TransformComponent.scaling,
-                    rotation: e.components.TransformComponent.rotation,
-                    translation: e.components.TransformComponent.translation
-                }
-
-
             promises.push(new Promise((resolve) => {
+                let blob = {...e.components}
+
+                if (e.components.TransformComponent)
+                    blob.TransformComponent = {
+                        scaling: e.components.TransformComponent.scaling,
+                        rotation: e.components.TransformComponent.rotation,
+                        translation: e.components.TransformComponent.translation
+                    }
+                const blobData = JSON.stringify({...e, components: blob})
+
                 database
-                    .updateEntity(e.id, {linkedTo: e.linkedTo, blob: JSON.stringify({...e, components: blob})})
+                    .updateEntity(e.id, {linkedTo: e.linkedTo, blob: blobData})
                     .then(res => {
                         if (res === 0)
                             database.table('entity').add({
-                                id: e.id, linkedTo: e.linkedTo, project: id, blob: JSON.stringify(e)
+                                id: e.id, linkedTo: e.linkedTo, project: id, blob: blobData
                             }).then(() => resolve()).catch(() => resolve())
                         else
                             resolve()

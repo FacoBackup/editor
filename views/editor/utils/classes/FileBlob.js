@@ -1,18 +1,21 @@
 import {WebWorker} from "./Worker";
 
 export default class FileBlob {
-    static loadAsString(file, binary) {
+    static loadAsString(file, binary, dataURL) {
         const worker = new WebWorker()
-        return worker.createExecution({file, binary: binary}, () => {
+        return worker.createExecution({file, binary: binary, dataURL}, () => {
             self.addEventListener('message', e => {
                 let reader = new FileReader();
                 reader.addEventListener('load', event => {
                     self.postMessage(event.target.result)
                 });
-                if (e.data.binary)
+                if (e.data.binary && !e.data.dataURL)
                     reader.readAsBinaryString(e.data.file)
-                else
+                else if (!e.data.binary && !e.data.dataURL)
                     reader.readAsText(e.data.file)
+                else if (!e.data.binary && e.data.dataURL){
+                    reader.readAsDataURL(e.data.file)
+                }
             })
         })
     }

@@ -25,7 +25,7 @@ export default function Home(props) {
     const refresh = (db) => {
         db?.listProject()
             .then(res => {
-
+                console.log(res)
                 setProjects(res.map(re => {
                     return {
                         ...re,
@@ -142,12 +142,15 @@ export default function Home(props) {
                                let promises = []
 
                                res.forEach(data => {
+
                                    const parsed = JSON.parse(data.data)
+
                                    if (data.type === 0)
                                        promises.push(new Promise(resolve => {
                                            database?.postProject({
                                                id: parsed.id,
-                                               settings: JSON.stringify(parsed.settings)
+                                               settings: parsed.settings,
+                                               meta: parsed.meta
                                            }).then(() => resolve()).catch(() => resolve())
                                        }))
                                    else if (data.type === 1)
@@ -159,8 +162,9 @@ export default function Home(props) {
                                })
 
                                Promise.all(promises).then(() => {
+
                                    load.finishEvent(EVENTS.PROJECT_IMPORT)
-                                   refresh()
+                                   refresh(database)
                                })
                            })
                        f.target.value = ''

@@ -1,23 +1,24 @@
 import JSZip from 'jszip'
 import saveAs from 'file-saver'
+import EVENTS from "../misc/EVENTS";
 
 export default class Maker {
     _canDownload = true
 
-    make(id, settings, database, setAlert) {
+    make(id, settings, database, setAlert, load) {
         if (this._canDownload) {
             this._canDownload = false
-            setAlert({
-                type: 'info',
-                message: 'Packaging data.'
-            })
+            load.pushEvent(EVENTS.PACKAGING_DATA)
             let zip = new JSZip();
             let assetsFolder = zip.folder("assets")
             let promises = []
             promises.push(new Promise(r => {
                 database.listFiles({project: id}).then(data => {
                     let withBlobs = data.map(d => {
-                        return new Promise(resolve =>  database.getBlob(d.id).then(b => resolve({...d, blob: b})).catch(() => resolve()))
+                        return new Promise(resolve => database.getBlob(d.id).then(b => resolve({
+                            ...d,
+                            blob: b
+                        })).catch(() => resolve()))
                     })
 
                     Promise.all(withBlobs).then(res => {
@@ -57,28 +58,29 @@ export default class Maker {
                             break
                     }
                 })
+                database.getProject(id).then(pj => {
+                    zip.file(settings.projectName + '.project', JSON.stringify(pj))
+                    zip.generateAsync({type: "blob"}).then(function (content) {
+                        load.finishEvent(EVENTS.PACKAGING_DATA)
+                        saveAs(content, settings.projectName + ".projection")
 
-                zip.file(settings.projectName + '.project', JSON.stringify({
-                    id, settings: settings.savable
-                }));
-                zip.generateAsync({type: "blob"}).then(function (content) {
-                    saveAs(content, settings.projectName + ".projection");
-                });
-                setAlert({
-                    type: 'success',
-                    message: 'Compression successful'
+                    })
+                    this._canDownload = true
                 })
-                this._canDownload = true
+
+
             })
-        } else
+        } else {
+            load.finishEvent(EVENTS.PACKAGING_DATA)
             setAlert({
                 type: 'error',
                 message: 'Saving process in execution.'
             })
+        }
     }
 
     static parse(file) {
-        let  promise
+        let promise
         let zip = new JSZip();
 
         try {
@@ -90,7 +92,7 @@ export default class Maker {
                     let promises = [
                         new Promise(r => {
                             const pj = files.find(f => f.name.includes('.project'))
-                            if(pj)
+                            if (pj)
                                 pj.async('string').then(res => r({
                                     data: res,
                                     type: 0
@@ -113,7 +115,7 @@ export default class Maker {
                         }))
                     })
 
-                 Promise.all(promises).then(res => {
+                    Promise.all(promises).then(res => {
                         resolve(res)
                     })
                 })

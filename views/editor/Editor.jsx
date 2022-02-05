@@ -81,7 +81,7 @@ export default function Editor(props) {
                 <Preferences settings={props.settings} serializer={props.serializer}/>
                 <GlobalOptions
                     downloadProject={() => {
-                        props.packageMaker.current.make(props.id, props.settings, database, props.setAlert)
+                        props.packageMaker.current.make(props.id, props.settings, database, props.setAlert, props.load)
                     }}
                     settings={props.settings}
                     redirect={props.redirect}

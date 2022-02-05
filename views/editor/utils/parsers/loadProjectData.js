@@ -95,7 +95,7 @@ function loadData(entities, callback, engine, database) {
         r.forEach(file => {
 
             if (file && file.type === 'mesh') {
-                console.log(file)
+
                 const objLoaded = JSON.parse(decodeURI(file.blob))
                 const newMesh = new Mesh({
                     ...objLoaded,
@@ -186,6 +186,7 @@ function parseEntity(entity, engine, skyboxImages, index, meshes) {
                 component.direction = components[k]._direction
 
             if (component) {
+
                 if (!(component instanceof SkyboxComponent))
                     Object.keys(components[k]).forEach(oK => {
                         if (!oK.includes("_") && oK !== 'gpu')

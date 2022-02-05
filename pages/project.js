@@ -85,6 +85,7 @@ export default function Project() {
             </Alert>
             <Editor
                 {...serializer}
+                load={load}
                 redirect={() => router.push('/')}
                 executingAnimation={executingAnimation}
                 setExecutingAnimation={setExecutingAnimation}

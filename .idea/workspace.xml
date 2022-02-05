@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="" />
+    <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout.sh" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/engine/ecs/components/TransformComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/ecs/components/TransformComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files/utils/import/handleImportFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/utils/import/handleImportFile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files/utils/parsers/resizeImageToPreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/utils/parsers/resizeImageToPreview.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +28,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/views/material" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/views/files" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -93,6 +102,8 @@
       <workItem from="1643921766329" duration="1794000" />
       <workItem from="1643924686833" duration="8661000" />
       <workItem from="1643978031636" duration="8417000" />
+      <workItem from="1643996496882" duration="762000" />
+      <workItem from="1643999218239" duration="6869000" />
     </task>
     <servers />
   </component>
