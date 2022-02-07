@@ -266,44 +266,38 @@ export default function useForm(
         }
     }
 
-    const getButton = (key) => {
-        const icon = getTabIcon(key)
-        if (icon)
-            return (
-                <Button highlight={currentKey === key} onClick={() => setCurrentKey(key)} className={styles.tabButton}>
-                    <span style={{fontSize: '1.1rem'}} className={'material-icons-round'}>{icon}</span>
-                </Button>
-            )
-        else
-            return null
-    }
-
 
     return useMemo(() => {
         if (selected && !executingAnimation && !selected.components.FolderComponent) {
             if (!currentKey) {
                 setCurrentKey(Object.keys(selected.components)[0])
             }
-            return (
-                <div className={styles.formsWrapper}>
-                    <div className={styles.tabs}>
-                        {Object.keys(selected.components).map((k, i) => (
-                            <React.Fragment key={'component-button-' + i}>
-                                {getButton(k)}
-                            </React.Fragment>
-                        ))}
-                    </div>
-                    {Object.keys(selected.components).map((k, i) => (
+            const data = Object.keys(selected.components).map((k, i) => {
+                const field = getField(k)
+
+                if (field)
+                    return (
                         <div
                             style={{
                                 height: '100%',
-                                display: k === currentKey ? 'flex' : 'none',
+                                display: 'flex',
                                 flexDirection: 'column',
                                 gap: '4px'
                             }}
-                            key={k + '-component-field-' + i}>
-                            {getField(k)}
+                        >
+                            {field}
                         </div>
+                    )
+                else
+                    return <></>
+            })
+
+            return (
+                <div className={styles.formsWrapper}>
+                    {data.map((d, i) => (
+                       <React.Fragment key={'component-field-' + i}>
+                           {d}
+                       </React.Fragment>
                     ))}
                 </div>
             )

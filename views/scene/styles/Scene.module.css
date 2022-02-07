@@ -102,8 +102,10 @@
 }
 
 .formsWrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    /*flex-direction: column;*/
+    align-content: flex-start;
+
     gap: 4px;
     height: 100%;
 

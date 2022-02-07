@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5a456cd5-da0f-4240-880e-d5f76eabaf42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/db/utils/splitData.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/db/utils/splitData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/engine" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/engine/renderer/shaders/mesh/resources/selected/meshSelectedFragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/services/engine/renderer/shaders/mesh/resources/selected/meshSelectedFragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/project.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/files/utils/import/handleImportFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/files/utils/import/handleImportFile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/mesh/MeshView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/views/mesh/MeshView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/mesh/hook/useVisualizer.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/mesh/hook/useVisualizer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +22,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="GLSL Shader" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/services/engine" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/components" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -35,6 +38,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Documents/dragon5/dragon4.gltf" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="5" />
@@ -51,7 +57,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/services/engine/renderer/shaders/deferred/resources" />
+    <property name="last_opened_file_path" value="//wsl$/Ubuntu/home/roque/projects/electron" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -63,17 +69,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\services\engine\renderer\shaders\deferred" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\services\engine\renderer\shaders\deferred\resources\flat" />
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\services\engine\renderer\shaders\deferred\resources" />
       <recent name="Z:\editor\services\engine\renderer\shaders\deferred\resources" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\projection\public" />
-      <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap" />
-      <recent name="Z:\projection\editor\core\renderer\shaders\shadowmap\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\services\engine\renderer\shaders\deferred\resources\flat" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\services\workers" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\services\image" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\editor\utils" />
       <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\material\workflows\algebra" />
-      <recent name="\\wsl.localhost\Ubuntu\home\roque\projects\editor\views\material\workflows\basic" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -102,7 +109,8 @@
       <workItem from="1643978031636" duration="8417000" />
       <workItem from="1643996496882" duration="762000" />
       <workItem from="1643999218239" duration="6869000" />
-      <workItem from="1644062080382" duration="31518000" />
+      <workItem from="1644062080382" duration="32134000" />
+      <workItem from="1644146846669" duration="24668000" />
     </task>
     <servers />
   </component>

@@ -65,7 +65,7 @@ export default function useSerializer(engine, database, setAlert, settings, id) 
                         lastModification: (new Date()).toDateString(),
                         creation: settings.creationDate
                     }),
-                    settings: JSON.stringify(settings.savable)
+                    settings: JSON.stringify(settings)
                 }).then(() => {
                     if (isLast) {
                         setAlert({
@@ -103,7 +103,7 @@ export default function useSerializer(engine, database, setAlert, settings, id) 
     }, [engine.entities, settings, database, id])
 
     useEffect(() => {
-        interval = setInterval(save, settings.timestamp)
+        interval = setInterval(save, 300000)
         return () => {
             clearInterval(interval)
         }

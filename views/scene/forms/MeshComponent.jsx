@@ -22,7 +22,7 @@ export default function MeshComponent(props) {
                 <AccordionSummary className={styles.summary}>
                     Mesh
                 </AccordionSummary>
-                <div className={styles.wrapper} style={{display: 'block', padding: '4px'}}>
+                <div className={styles.wrapper} style={{display: 'grid', padding: '4px', gap: '4px'}}>
                     <Dropdown
                         disabled={props.quickAccess.meshes.length === 0}
                         className={styles.summary}
@@ -48,7 +48,7 @@ export default function MeshComponent(props) {
                                             onClick: () => props.database.getBlob(m.id).then(b => {
                                                 let data = props.engine.meshes.find(mesh => mesh.id === m.id)
                                                 if (!data) {
-                                                    const objLoaded = JSON.parse(decodeURI(b))
+                                                    const objLoaded = JSON.parse(b)
                                                     const newMesh = new Mesh({
                                                         ...objLoaded,
                                                         id: m.id,
@@ -67,126 +67,114 @@ export default function MeshComponent(props) {
                             ))}
                         </DropdownOptions>
                     </Dropdown>
+                    {hasPhysics.body ?
+
+                        <Dropdown
+
+                            className={styles.summary}
+                            styles={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px !important',
+                                width: '100%'
+                            }}
+                            variant={'outlined'}
+                            justify={'start'} align={'bottom'}>
+                            <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>view_in_ar</span>
+                            Meshes
+                            <DropdownOptions>
+
+                                <DropdownOption
+                                    option={{
+                                        label: 'Sphere collider',
+                                        icon: <span style={{fontSize: '1.2rem'}}
+                                                    className={'material-icons-round'}>check</span>,
+                                        onClick: () => null, // TODO - submit collider
+                                    }}/>
+                                <DropdownOption
+                                    option={{
+                                        label: 'AABB collider',
+                                        icon: <span
+                                            style={{fontSize: '1.2rem'}}
+                                            className={'material-icons-round'}>check</span>,
+                                        onClick: () => null, // TODO - submit collider
+                                    }}/>
+                            </DropdownOptions>
+                        </Dropdown>
+
+                        :
+                        <Button
+                            onClick={() => {
+                                props.submitPhysics(true)
+                                setHasPhysics(prev => {
+                                    return {
+                                        ...prev,
+                                        body: true
+                                    }
+                                })
+                            }}
+                            className={styles.button}
+                            styles={{background: 'var(--background-2)'}}
+                            variant={"outlined"}>
+                            <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>add</span>
+                            Attach physics body
+                        </Button>
+                    }
+                    {hasPhysics.collider ?
+                        <Dropdown
+                            className={styles.summary}
+                            styles={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px !important',
+                                width: '100%'
+                            }}
+                            variant={'outlined'}
+                            justify={'start'} align={'bottom'}>
+                            <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>view_in_ar</span>
+                            Meshes
+                            <DropdownOptions>
+
+                                <DropdownOption
+                                    option={{
+                                        label: 'Sphere collider',
+                                        icon: <span style={{fontSize: '1.2rem'}}
+                                                    className={'material-icons-round'}>check</span>,
+                                        onClick: () => null, // TODO - submit collider
+                                    }}/>
+                                <DropdownOption
+                                    option={{
+                                        label: 'AABB collider',
+                                        icon: <span
+                                            style={{fontSize: '1.2rem'}}
+                                            className={'material-icons-round'}>check</span>,
+                                        onClick: () => null, // TODO - submit collider
+                                    }}/>
+                            </DropdownOptions>
+                        </Dropdown>
+                        :
+                        <Button
+                            onClick={() => {
+                                props.submitPhysicsCollider(true)
+                                setHasPhysics(prev => {
+                                    return {
+                                        ...prev,
+                                        collider: true
+                                    }
+                                })
+                            }}
+                            className={styles.button}
+                            styles={{background: 'var(--background-2)'}}
+                            variant={"outlined"}>
+                            <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>add</span>
+                            Attach physics collider
+                        </Button>
+                    }
                 </div>
             </Accordion>
-            {hasPhysics.body ?
-                <Accordion>
-                    <AccordionSummary className={styles.summary}>
-                        Physics collider
-                    </AccordionSummary>
-                    <div className={styles.wrapper} style={{display: 'block', padding: '4px'}}>
-                        <Dropdown
 
-                            className={styles.summary}
-                            styles={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '8px',
-                                padding: '8px !important',
-                                width: '100%'
-                            }}
-                            variant={'outlined'}
-                            justify={'start'} align={'bottom'}>
-                            <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>view_in_ar</span>
-                            Meshes
-                            <DropdownOptions>
-
-                                <DropdownOption
-                                    option={{
-                                        label: 'Sphere collider',
-                                        icon: <span style={{fontSize: '1.2rem'}}
-                                                    className={'material-icons-round'}>check</span>,
-                                        onClick: () => null, // TODO - submit collider
-                                    }}/>
-                                <DropdownOption
-                                    option={{
-                                        label: 'AABB collider',
-                                        icon: <span
-                                            style={{fontSize: '1.2rem'}}
-                                            className={'material-icons-round'}>check</span>,
-                                        onClick: () => null, // TODO - submit collider
-                                    }}/>
-                            </DropdownOptions>
-                        </Dropdown>
-                    </div>
-                </Accordion>
-                :
-                <Button
-                    onClick={() => {
-                        props.submitPhysics(true)
-                        setHasPhysics(prev => {
-                            return {
-                                ...prev,
-                                body: true
-                            }
-                        })
-                    }}
-                    className={styles.button}
-                    styles={{background: 'var(--background-2)'}}
-                    variant={"outlined"}>
-                    <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>add</span>
-                    Attach physics body
-                </Button>
-            }
-            {hasPhysics.collider ?
-                <Accordion>
-                    <AccordionSummary className={styles.summary}>
-                        Physics collider
-                    </AccordionSummary>
-                    <div className={styles.wrapper} style={{display: 'block', padding: '4px'}}>
-                        <Dropdown
-
-                            className={styles.summary}
-                            styles={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '8px',
-                                padding: '8px !important',
-                                width: '100%'
-                            }}
-                            variant={'outlined'}
-                            justify={'start'} align={'bottom'}>
-                            <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>view_in_ar</span>
-                            Meshes
-                            <DropdownOptions>
-
-                                <DropdownOption
-                                    option={{
-                                        label: 'Sphere collider',
-                                        icon: <span style={{fontSize: '1.2rem'}}
-                                                    className={'material-icons-round'}>check</span>,
-                                        onClick: () => null, // TODO - submit collider
-                                    }}/>
-                                <DropdownOption
-                                    option={{
-                                        label: 'AABB collider',
-                                        icon: <span
-                                            style={{fontSize: '1.2rem'}}
-                                            className={'material-icons-round'}>check</span>,
-                                        onClick: () => null, // TODO - submit collider
-                                    }}/>
-                            </DropdownOptions>
-                        </Dropdown>
-                    </div>
-                </Accordion>
-                :
-                <Button
-                    onClick={() => {
-                        props.submitPhysicsCollider(true)
-                        setHasPhysics(prev => {
-                            return {
-                                ...prev,
-                                collider: true
-                            }
-                        })
-                    }}
-                    className={styles.button}
-                    styles={{background: 'var(--background-2)'}}
-                    variant={"outlined"}>
-                    <span style={{fontSize: '1.2rem'}} className={'material-icons-round'}>add</span>
-                    Attach physics collider
-                </Button>
-            }
 
         </>
     )

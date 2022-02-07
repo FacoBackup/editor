@@ -16,6 +16,9 @@ import Maker from "../services/workers/Maker";
 import loadProject, {loadEntities} from "../views/editor/utils/parsers/loadProjectData";
 import DatabaseProvider from "../components/db/DatabaseProvider";
 import Editor from "../views/editor/Editor";
+import SettingsProvider from "../views/editor/hook/SettingsProvider";
+import useQuickAccess from "../components/db/useQuickAccess";
+import QuickAccessProvider from "../components/db/QuickAccessProvider";
 
 
 export default function Project() {
@@ -24,12 +27,13 @@ export default function Project() {
     const [alert, setAlert] = useState({})
     const [id, setId] = useState()
     const settings = useSettings()
-    const engine = useEngine(id, executingAnimation)
+    const engine = useEngine(id, executingAnimation, settings)
     const [database, setDatabase] = useState()
     const load = useContext(LoadProvider)
     const packageMaker = useRef()
     const theme = useContext(ThemeContext)
     const serializer = useSerializer(engine, database, setAlert, settings, id)
+    const files = useQuickAccess(id, load, database)
 
     useEffect(() => {
         setDatabase(new Database('FS'))
@@ -62,7 +66,6 @@ export default function Project() {
     useEffect(() => {
         if (engine.gpu && database)
             loadEntities(database, engine, id, () => {
-
                 load.finishEvent(EVENTS.PROJECT_DATA)
             })
     }, [engine.gpu])
@@ -70,28 +73,33 @@ export default function Project() {
 
     return (
         <DatabaseProvider.Provider value={database}>
+            <SettingsProvider.Provider value={settings}>
+                <QuickAccessProvider.Provider value={files}>
 
-            <Head>
-                <title>{settings.projectName}</title>
-            </Head>
-            <Alert
-                open={alert.type !== undefined}
-                handleClose={() => setAlert({})} variant={alert.type}
-                delay={3500}>
-                <div className={styles.alertContent} title={alert.message}>
-                    {alert.message}
-                </div>
-            </Alert>
-            <Editor
-                {...serializer}
-                load={load}
-                redirect={() => router.push('/')}
-                executingAnimation={executingAnimation}
-                setExecutingAnimation={setExecutingAnimation}
-                theme={theme}
-                packageMaker={packageMaker}
-                engine={engine}
-                setAlert={setAlert}
-                settings={settings} id={id}/>
-        </DatabaseProvider.Provider>)
+                    <Head>
+                        <title>{settings.projectName}</title>
+                    </Head>
+                    <Alert
+                        open={alert.type !== undefined}
+                        handleClose={() => setAlert({})} variant={alert.type}
+                        delay={3500}>
+                        <div className={styles.alertContent} title={alert.message}>
+                            {alert.message}
+                        </div>
+                    </Alert>
+                    <Editor
+                        {...serializer}
+                        load={load}
+                        redirect={() => router.push('/')}
+                        executingAnimation={executingAnimation}
+                        setExecutingAnimation={setExecutingAnimation}
+                        theme={theme}
+                        packageMaker={packageMaker}
+                        engine={engine}
+                        setAlert={setAlert}
+                        id={id}/>
+                </QuickAccessProvider.Provider>
+            </SettingsProvider.Provider>
+        </DatabaseProvider.Provider>
+    )
 }

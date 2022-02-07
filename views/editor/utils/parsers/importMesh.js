@@ -10,7 +10,9 @@ export default function importMesh(file, engine, setAlert) {
 
     try {
         if (file.type === 'mesh') {
-            const objLoaded = JSON.parse(decodeURI(file.blob))
+            console.trace(file.blob)
+            const objLoaded = JSON.parse(file.blob)
+            console.log(objLoaded)
 
             let mesh = engine.meshes.find(m => m.id === file.id)
             if (!mesh) {
@@ -70,6 +72,7 @@ export default function importMesh(file, engine, setAlert) {
             })
         }
     } catch (e) {
+
         setAlert({
             type: 'error',
             message: 'Error loading mesh.'

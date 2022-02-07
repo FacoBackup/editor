@@ -14,7 +14,7 @@ import EVENTS from "../editor/utils/misc/EVENTS";
 import ControlProvider from "../../components/tabs/components/ControlProvider";
 
 export default function MeshView(props) {
-    const engine = useVisualizer(false, false, false)
+    const engine = useVisualizer(false, false)
     const database = useContext(DatabaseProvider)
     const load = useContext(LoadProvider)
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function MeshView(props) {
                 .then(res => {
 
                     load.finishEvent(EVENTS.LOADING_VIEWPORT)
-                    initializeMesh(JSON.parse(decodeURI(res.blob)), engine.gpu, engine.id, res.name, engine.dispatchEntities, engine.setMeshes)
+                    initializeMesh(JSON.parse(res.blob), engine.gpu, engine.id, res.name, engine.dispatchEntities, engine.setMeshes, true)
                 })
         }
     }, [engine.initialized])

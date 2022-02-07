@@ -20,18 +20,19 @@ import SceneView from "../scene/SceneView";
 import Tabs from "../../components/tabs/Tabs";
 import FilesView from "../files/FilesView";
 import EVENTS from "./utils/misc/EVENTS";
+import SettingsProvider from "./hook/SettingsProvider";
 
 export default function Editor(props) {
-
+    const settingsContext = useContext(SettingsProvider)
     const fullscreenRef = useRef()
     const database = useContext(DatabaseProvider)
 
     const handleFullscreen = e => {
         if (!document.fullscreenElement)
-            props.settings.setFullscreen(false)
+            settingsContext.fullscreen = false
     }
     useEffect(() => {
-        if (props.settings.fullscreen) {
+        if (settingsContext.fullscreen) {
             fullscreenRef.current?.requestFullscreen()
             document.addEventListener('fullscreenchange', handleFullscreen)
         } else if (document.fullscreenElement)
@@ -40,8 +41,8 @@ export default function Editor(props) {
         return () => {
             document.removeEventListener('fullscreenchange', handleFullscreen)
         }
-    }, [props.settings.fullscreen])
-    useControl(props.engine, props.save, props.settings)
+    }, [settingsContext.fullscreen])
+    useControl(props.engine, props.save, settingsContext)
 
     const [filesLoaded, setFilesLoaded] = useState([])
     const [currentTab, setCurrentTab] = useState(0)
@@ -72,116 +73,114 @@ export default function Editor(props) {
         props.setAlert
     )
 
-    const files = useQuickAccess(props.id, props.load)
-
 
     return (
-        <QuickAccessProvider.Provider value={files}>
 
-            <div className={styles.wrapper}>
-                <Preferences settings={props.settings} serializer={props.serializer}/>
-                <GlobalOptions
-                    downloadProject={() => {
-                        props.packageMaker.current.make(props.id, props.settings, database, props.setAlert, props.load)
-                    }}
-                    settings={props.settings}
-                    redirect={props.redirect}
-                    save={props.save}
-                />
-                <Alert
-                    open={props.savingAlert}
+        <div className={styles.wrapper}>
+            <Preferences  serializer={props.serializer}/>
+            <GlobalOptions
+                downloadProject={() => {
+                    props.packageMaker.current.make(props.id, settingsContext, database, props.setAlert, props.load)
+                }}
 
-                    handleClose={() => props.setSavingAlert(false)}
-                    onClick={() => props.save()} variant={'info'}
-                    delay={5000}>
-                    Saving project (2 min).
-                </Alert>
+                redirect={props.redirect}
+                save={props.save}
+            />
+            <Alert
+                open={props.savingAlert}
 
-                <Tabs
-                    fallbackOptions={fallbackOptions}
-                    onBeforeSwitch={(newTab) => {
-                        if(newTab === 0)
-                            props.engine.setCanRender(true)
-                        else
-                            props.engine.setCanRender(false)
-                    }}
-                    tab={currentTab} setTab={setCurrentTab}
-                    tabs={[
-                        {
-                            open: true,
-                            icon: <span
-                                style={{fontSize: '1.2rem'}}
-                                className={`material-icons-round`}>video_settings</span>,
-                            label: 'Viewport',
-                            children: (
-                                <div className={styles.viewportWrapper}>
+                handleClose={() => props.setSavingAlert(false)}
+                onClick={() => props.save()} variant={'info'}
+                delay={5000}>
+                Saving project (2 min).
+            </Alert>
 
-                                    <div
-                                        ref={fullscreenRef}
-                                        style={{
-                                            position: 'relative',
-                                            width: '100%',
-                                            height: '100%',
-                                            overflow: 'hidden'
-                                        }}>
-                                        {props.settings.visibility.viewportOptions ?
-                                            <ViewportOptions engine={props.engine} hook={props.settings} id={props.id}/>
-                                            :
-                                            null}
+            <Tabs
+                fallbackOptions={fallbackOptions}
+                onBeforeSwitch={(newTab) => {
+                    if (newTab === 0)
+                        props.engine.setCanRender(true)
+                    else
+                        props.engine.setCanRender(false)
+                }}
+                tab={currentTab} setTab={setCurrentTab}
+                tabs={[
+                    {
+                        open: true,
+                        icon: <span
+                            style={{fontSize: '1.2rem'}}
+                            className={`material-icons-round`}>video_settings</span>,
+                        label: 'Viewport',
+                        children: (
+                            <div className={styles.viewportWrapper}>
 
-                                        <Viewport
-                                            id={props.id}
+                                <div
+                                    ref={fullscreenRef}
+                                    style={{
+                                        position: 'relative',
+                                        width: '100%',
+                                        height: '100%',
+                                        overflow: 'hidden'
+                                    }}>
+                                    {settingsContext.viewportOptionsVisibility ?
+                                        <ViewportOptions
                                             engine={props.engine}
-                                            allowDrop={true}
-                                            handleDrop={event => handleDrop(event, database, props.engine, props.setAlert)}
+                                            id={props.id}
                                         />
-                                    </div>
-                                    {props.settings.visibility.scene ?
-                                        <>
-                                            <ResizableBar type={'width'}/>
-                                            <SceneView
-                                                executingAnimation={props.executingAnimation}
-                                                hierarchy={props.engine.hierarchy}
-                                                setAlert={props.setAlert}
-                                                engine={props.engine}
-                                            />
-                                        </> : null}
+                                        :
+                                        null}
 
+                                    <Viewport
+                                        id={props.id}
+                                        engine={props.engine}
+                                        allowDrop={true}
+                                        handleDrop={event => handleDrop(event, database, props.engine, props.setAlert)}
+                                    />
                                 </div>
-                            )
-                        },
-                        ...materials,
-                        ...meshes,
-                        ...images
-                    ]}
+                                {settingsContext.sceneVisibility ?
+                                    <>
+                                        <ResizableBar type={'width'}/>
+                                        <SceneView
+                                            executingAnimation={props.executingAnimation}
+                                            hierarchy={props.engine.hierarchy}
+                                            setAlert={props.setAlert}
+                                            engine={props.engine}
+                                        />
+                                    </> : null}
+
+                            </div>
+                        )
+                    },
+                    ...materials,
+                    ...meshes,
+                    ...images
+                ]}
+            />
+
+            {settingsContext.filesVisibility ?
+                <FilesView
+                    setAlert={props.setAlert}
+                    currentTab={currentTab}
+                    label={'FilesView'} id={props.id}
+                    openEngineFile={(fileID, fileName) => {
+                        if (!filesLoaded.find(file => file.fileID === fileID)) {
+                            props.load.pushEvent(EVENTS.LOAD_FILE)
+                            database.getFileWithBlob(fileID).then(res => {
+                                setFilesLoaded(prev => [...prev, {
+                                    blob: res.blob,
+                                    name: fileName,
+                                    fileID: fileID,
+                                    type: res.type
+                                }])
+                                props.load.finishEvent(EVENTS.LOAD_FILE)
+                            })
+                        }
+                    }}
                 />
+                :
+                null}
+        </div>
 
-                {props.settings.visibility.files ?
-                    <FilesView
-                        setAlert={props.setAlert}
-                        currentTab={currentTab}
-                        label={'FilesView'} id={props.id}
-                        openEngineFile={(fileID, fileName) => {
-                            if (!filesLoaded.find(file => file.fileID === fileID)) {
-                                props.load.pushEvent(EVENTS.LOAD_FILE)
-                                database.getFileWithBlob(fileID).then(res => {
-                                    setFilesLoaded(prev => [...prev, {
-                                        blob: res.blob,
-                                        name: fileName,
-                                        fileID: fileID,
-                                        type: res.type
-                                    }])
-                                    props.load.finishEvent(EVENTS.LOAD_FILE)
-                                })
-                            }
-                        }}
-                    />
-                    :
-                    null}
-
-
-            </div>
-        </QuickAccessProvider.Provider>
     )
 }
 
@@ -190,7 +189,6 @@ Editor.propTypes = {
     executingAnimation: PropTypes.bool.isRequired,
     setExecutingAnimation: PropTypes.func.isRequired,
     setAlert: PropTypes.func.isRequired,
-    settings: PropTypes.object.isRequired,
     engine: PropTypes.object.isRequired,
     id: PropTypes.string,
     packageMaker: PropTypes.object.isRequired,

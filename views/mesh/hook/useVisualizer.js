@@ -19,8 +19,9 @@ import MaterialComponent from "../../../services/engine/ecs/components/MaterialC
 import MeshComponent from "../../../services/engine/ecs/components/MeshComponent";
 import TransformComponent from "../../../services/engine/ecs/components/TransformComponent";
 import Mesh from "../../../services/engine/renderer/elements/Mesh";
+import {SHADING_MODELS} from "../../editor/hook/useSettings";
 
-export default function useVisualizer(initializePlane, initializeSphere, shadows) {
+export default function useVisualizer(initializePlane, initializeSphere) {
     const [id, setId] = useState()
     const [gpu, setGpu] = useState()
     const [meshes, setMeshes] = useState([])
@@ -69,22 +70,16 @@ export default function useVisualizer(initializePlane, initializeSphere, shadows
             if (initializeSphere)
                 renderer.current.camera.centerLookAt = sphereMesh.translation
 
-            if (shadows)
-                renderer.current.systems = [
-                    new TransformSystem(),
-                    new ShadowMapSystem(gpu),
-                    new DeferredSystem(gpu, 1),
-                    new PostProcessingSystem(gpu, 1)
-                ]
-            else
-                renderer.current.systems = [
-                    new TransformSystem(),
-                    new DeferredSystem(gpu, 1),
-                    new PostProcessingSystem(gpu, 1)
-                ]
+            renderer.current.systems = [
+                new TransformSystem(),
+                new ShadowMapSystem(gpu),
+                new DeferredSystem(gpu, 1),
+                new PostProcessingSystem(gpu, 1)
+            ]
+
             setInitialized(true)
 
-            parseEngineEntities({meshes, materials}, entities, materials, meshes, renderer.current)
+            parseEngineEntities({meshes, materials, shadingModel: SHADING_MODELS.DETAIL}, entities, materials, meshes, renderer.current)
         } else if (gpu && id) {
 
             resizeObserver = new ResizeObserver(() => {
@@ -94,7 +89,7 @@ export default function useVisualizer(initializePlane, initializeSphere, shadows
             resizeObserver.observe(document.getElementById(id + '-canvas'))
 
             renderer.current?.stop()
-            parseEngineEntities({meshes, materials}, entities, materials, meshes, renderer.current)
+            parseEngineEntities({meshes, materials, shadingModel: SHADING_MODELS.DETAIL}, entities, materials, meshes, renderer.current)
 
 
             renderer.current?.start(entities)
@@ -149,7 +144,7 @@ function initializeLight(dispatch) {
     })
 }
 
-export function initializeMesh(data, gpu, id, name, dispatch, setMeshes) {
+export function initializeMesh(data, gpu, id, name, dispatch, setMeshes, noTranslation) {
     let mesh = new Mesh({
         ...data,
         id: randomID(),
@@ -164,7 +159,8 @@ export function initializeMesh(data, gpu, id, name, dispatch, setMeshes) {
     const transformation = new TransformComponent()
     transformation.scaling = data.scaling
     transformation.rotation = data.rotation
-    transformation.translation = data.translation
+    if(!noTranslation)
+        transformation.translation = data.translation
 
     dispatch({
         type: ENTITY_ACTIONS.ADD,

@@ -76,12 +76,6 @@ export default function Home(props) {
                                 materials: 0
                             }),
                             settings: JSON.stringify({
-                                projectCreationDate: now,
-                                showFPS: false,
-                                lightCalculations: true,
-                                shadowMapping: true,
-                                fxaa: true,
-                                timestamp: 300000,
                                 projectName: projectName
                             })
                         }
@@ -140,32 +134,41 @@ export default function Home(props) {
                        Maker.parse(f.target.files[0], database)
                            .then((res) => {
                                let promises = []
+                               const pj = res.find(data => data.type === 0)
 
-                               res.forEach(data => {
+                               if(!projects.find(p => p.id === JSON.parse(pj.data).id)) {
+                                   res.forEach(data => {
+                                       const parsed = JSON.parse(data.data)
 
-                                   const parsed = JSON.parse(data.data)
-
-                                   if (data.type === 0)
-                                       promises.push(new Promise(resolve => {
-                                           database?.postProject({
-                                               id: parsed.id,
-                                               settings: parsed.settings,
-                                               meta: parsed.meta
-                                           }).then(() => resolve()).catch(() => resolve())
-                                       }))
-                                   else if (data.type === 1)
-                                       promises.push(new Promise(resolve => {
-                                           database?.postFileWithBlob(parsed, parsed.blob).then(() => resolve()).catch(() => resolve())
-                                       }))
-                                   else if (data.type === 2)
-                                       promises.push(new Promise(resolve => database?.postEntity(parsed).then(() => resolve()).catch(() => resolve())))
-                               })
-
-                               Promise.all(promises).then(() => {
-
+                                       if (data.type === 0)
+                                           promises.push(new Promise(resolve => {
+                                               database?.postProject({
+                                                   id: parsed.id,
+                                                   settings: parsed.settings,
+                                                   meta: parsed.meta
+                                               }).then(() => resolve()).catch(() => resolve())
+                                           }))
+                                       else if (data.type === 1)
+                                           promises.push(new Promise(resolve => {
+                                               database?.postFileWithBlob(parsed, parsed.blob).then(() => resolve()).catch(() => resolve())
+                                           }))
+                                       else if (data.type === 2) {
+                                           promises.push(new Promise(resolve => database?.postEntity(parsed).then(() => resolve()).catch(() => resolve())))
+                                       }
+                                   })
+                                   Promise.all(promises).then(() => {
+                                       load.finishEvent(EVENTS.PROJECT_IMPORT)
+                                       refresh(database)
+                                   })
+                               }
+                               else {
                                    load.finishEvent(EVENTS.PROJECT_IMPORT)
-                                   refresh(database)
-                               })
+                                   setAlert({
+                                       type: 'error',
+                                       message: 'Project already exists.'
+                                   })
+                               }
+
                            })
                        f.target.value = ''
                    }}

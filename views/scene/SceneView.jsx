@@ -25,14 +25,14 @@ export default function SceneView(props) {
         let toFilter = props.engine.entities.filter(d => !d.linkedTo && !d.components.GridComponent && (searchString.length > 0 ?  d.name.toLowerCase().includes(searchString) : true))
         return [{
             id: 0,
-            label: 'SceneView',
+            label: 'Scene',
             children: toFilter.map(f => {
                 return mapToView(f, props.engine.entities, (el) => {
                     props.engine.setSelectedElement(el)
                 })
             }),
             icon: <span className={'material-icons-round'} style={{fontSize: '1rem'}}>inventory_2</span>,
-            type: 'SceneView entity',
+            type: 'Scene',
             phantomNode: true
         }]
     }, [props.engine.entities, searchString])

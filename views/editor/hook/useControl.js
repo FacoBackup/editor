@@ -54,16 +54,16 @@ export default function useControl(engine, save, settings) {
             }
             if (e.key === 's' && isCtrl && isAlt) {
                 e.preventDefault()
-                settings.setViewPreferences(true)
+                settings.viewPreferences = true
             }
             if (e.key.toLowerCase() === 'h' && isCtrl && isShift) {
                 e.preventDefault()
-                settings.setFps(!settings.fps)
+                settings.fpsVisibility = !settings.fpsVisibility
             }
 
             if (e.key.toLowerCase() === 'f' && isCtrl && isShift) {
                 e.preventDefault()
-                settings.setFullscreen(!settings.fullscreen)
+                settings.fullscreen = !settings.fullscreen
             }
         } else {
 
@@ -86,6 +86,6 @@ export default function useControl(engine, save, settings) {
             document.removeEventListener('keyup', handleKey)
             document.removeEventListener('keydown', handleKey)
         }
-    }, [engine.entities, engine.selectedElement, settings.savable, toClone])
+    }, [engine.entities, engine.selectedElement, settings, toClone])
 }
 

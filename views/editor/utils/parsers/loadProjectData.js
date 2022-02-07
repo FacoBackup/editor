@@ -20,9 +20,13 @@ export default function loadProject(database, engine, settings, setAlert, id, re
 
     database.getProject(id)
         .then(res => {
-            const s = typeof res.settings === 'string' ? JSON.parse(res.settings) : res.settings
-            settings.load(s)
-            callback()
+            try{
+                const s = typeof res.settings === 'string' ? JSON.parse(res.settings) : res.settings
+                if(s !== undefined && typeof s === 'object' && Object.keys(s).length > 0)
+                    settings = s
+                callback()
+            }catch (e){}
+
         }).catch(e => {
         redirect()
     })
@@ -34,7 +38,7 @@ export function loadEntities(database, engine, id, callback) {
     database
         .listEntities(id)
         .then(entities => {
-
+            console.log(entities)
             loadData(
                 entities,
                 (skyboxImages,
@@ -59,10 +63,13 @@ function createPromise(database, fileID) {
 }
 
 function loadData(entities, callback, engine, database) {
+
     const meshesToLoad = entities.map(e => {
         const body = JSON.parse(e.blob)
+
         return body.components.MeshComponent?.meshID
     }).filter(e => e !== undefined)
+
     const materialsToLoad = entities.map(e => {
         const body = JSON.parse(e.blob)
         return body.components.MaterialComponent?.materialID
@@ -97,7 +104,7 @@ function loadData(entities, callback, engine, database) {
 
             if (file && file.type === 'mesh') {
 
-                const objLoaded = JSON.parse(decodeURI(file.blob))
+                const objLoaded = JSON.parse(file.blob)
                 const newMesh = new Mesh({
                     ...objLoaded,
                     id: file.id,

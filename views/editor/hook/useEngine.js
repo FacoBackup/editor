@@ -13,17 +13,12 @@ import GridComponent from "../../../services/engine/ecs/components/GridComponent
 import parseEngineEntities from "../../../services/engine/utils/parseEngineEntities";
 
 
-export default function useEngine(id, canExecutePhysicsAnimation) {
+export default function useEngine(id, canExecutePhysicsAnimation, settings) {
     const [canRender, setCanRender] = useState(true)
     const [gpu, setGpu] = useState()
     const [selectedElement, setSelectedElement] = useState(null)
     const [meshes, setMeshes] = useState([])
     const [materials, setMaterials] = useState([])
-
-    // SETTINGS
-    const [cameraType, setCameraType] = useState('spherical')
-    const [resolutionMultiplier, setResolutionMultiplier] = useState(1)
-
 
     useEffect(() => {
         if (id) {
@@ -41,40 +36,56 @@ export default function useEngine(id, canExecutePhysicsAnimation) {
 
     const renderer = useRef()
     let resizeObserver
+
     const renderingProps = useMemo(() => {
+
         return {
 
             canExecutePhysicsAnimation, meshes,
             selectedElement, setSelectedElement,
-            materials, cameraType
+            materials, cameraType: settings.cameraType,
+            shadingModel: settings.shadingModel
         }
     }, [
-    canExecutePhysicsAnimation,
+        canExecutePhysicsAnimation,
         meshes, selectedElement,
-        setSelectedElement, materials, cameraType
+        setSelectedElement, materials,
+        settings.cameraType,
+        settings.shadingModel
     ])
+
+
+    const updateSystems = () => {
+        console.log(settings)
+        renderer.current.systems = [
+            new PhysicsSystem(),
+            new TransformSystem(),
+            new ShadowMapSystem(gpu),
+            new PickSystem(gpu),
+            new DeferredSystem(gpu, settings.resolutionMultiplier),
+            new PostProcessingSystem(gpu, settings.resolutionMultiplier)
+        ]
+    }
+
+    useEffect(() => {
+        if (renderer.current)
+            renderer.current.camera.fov = settings.fov
+    }, [settings.fov])
 
     useEffect(() => {
         if (initialized) {
-            renderer.current.systems = [
-                new DeferredSystem(gpu, resolutionMultiplier),
-                new PostProcessingSystem(gpu, resolutionMultiplier)
-            ]
+            renderer.current?.stop()
+            updateSystems()
+            renderer.current?.start(entities)
         }
-    }, [resolutionMultiplier])
+    }, [settings.resolutionMultiplier])
 
     useEffect(() => {
         if (gpu && !initialized && id) {
             const gridEntity = new Entity(undefined, 'Grid')
+
             renderer.current = new Engine(id, gpu)
-            renderer.current.systems = [
-                new PhysicsSystem(),
-                new TransformSystem(),
-                new ShadowMapSystem(gpu),
-                new PickSystem(gpu),
-                new DeferredSystem(gpu, resolutionMultiplier),
-                new PostProcessingSystem(gpu, resolutionMultiplier)
-            ]
+            updateSystems()
             setInitialized(true)
 
             dispatchEntities({type: ENTITY_ACTIONS.ADD, payload: gridEntity})
@@ -85,21 +96,16 @@ export default function useEngine(id, canExecutePhysicsAnimation) {
                 }
             })
 
-
             parseEngineEntities(renderingProps, entities, renderingProps.materials, renderingProps.meshes, renderer.current)
         } else if (gpu && id) {
             resizeObserver = new ResizeObserver(() => {
-                if (gpu && initialized) {
-
+                if (gpu && initialized)
                     renderer.current.camera.aspectRatio = gpu.canvas.width / gpu.canvas.height
-
-                }
             })
             resizeObserver.observe(document.getElementById(id + '-canvas'))
 
-
             parseEngineEntities(renderingProps, entities, renderingProps.materials, renderingProps.meshes, renderer.current)
-            if(!canRender)
+            if (!canRender)
                 renderer.current?.stop()
             if (canRender && !renderer.current?.keep)
                 renderer.current?.start(entities)
@@ -113,12 +119,10 @@ export default function useEngine(id, canExecutePhysicsAnimation) {
 
 
     return {
-        resolutionMultiplier, setResolutionMultiplier,
-        cameraType, setCameraType,
         entities, dispatchEntities,
         meshes, setMeshes,
         gpu, materials, setMaterials,
         selectedElement, setSelectedElement,
-        canRender, setCanRender
+        canRender, setCanRender,
     }
 }
